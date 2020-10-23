@@ -1,10 +1,21 @@
 'use strict'
 
-import { app, protocol, BrowserWindow, ipcMain } from 'electron'
-import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
-import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
+import {
+  app,
+  protocol,
+  BrowserWindow,
+  ipcMain,
+} from 'electron'
+import {
+  createProtocol
+} from 'vue-cli-plugin-electron-builder/lib'
+import installExtension, {
+  VUEJS_DEVTOOLS
+} from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
-import { exec } from 'child_process'
+import {
+  exec
+} from 'child_process'
 import si from 'systeminformation'
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -12,15 +23,19 @@ import si from 'systeminformation'
 let win
 
 // Scheme must be registered before the app is ready
-protocol.registerSchemesAsPrivileged([
-  { scheme: 'app', privileges: { secure: true, standard: true } }
-])
+protocol.registerSchemesAsPrivileged([{
+  scheme: 'app',
+  privileges: {
+    secure: true,
+    standard: true
+  }
+}])
 
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 1280*0.8,
-    height: 800*0.8,
+    width: 1280 * 0.8,
+    height: 800 * 0.8,
     resizable: false,
     frame: false,
     webPreferences: {
@@ -108,18 +123,11 @@ ipcMain.on('minimize-app', function (event) {
 //   console.log(`stdout: ${stdout}`);
 // });
 
-cpuData()
 
-async function cpuData() {
-  try {
-    const data = await si.blockDevices();
-    console.log('CPU Information:');
-    console.log('manufucturer: ' + data);
-    for(let key in data){
-      console.log(data[key])
-    }
-  } catch (e) {
-    console.log(e)
-  }
-}
-
+ipcMain.on('fetch-disks', (event) => {
+  setInterval(() => {
+    si.diskLayout(data => {
+      event.reply('update-disks', data)
+    })
+  }, 1000);
+})

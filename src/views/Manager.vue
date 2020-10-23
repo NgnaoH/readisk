@@ -31,7 +31,7 @@
             <li class="item">
               <div class="read-speed">
                 <div class="sub">Read speed</div>
-                <div class="time">{{ readSpeed }} KB/s</div>
+                <div class="time">10 KB/s</div>
               </div>
               <div class="write-speed">
                 <div class="sub">Write speed</div>
@@ -42,7 +42,7 @@
               <div class="item">
                 <div class="write-speed">
                   <div class="sub">Capacity</div>
-                  <div class="time">10</div>
+                  <div class="time" ref="capacity"></div>
                 </div>
               </div>
               <div class="item">
@@ -76,11 +76,24 @@
 
 <script>
 import Chart from "@/components/Chart.vue";
+import { ipcRenderer } from "electron";
 export default {
-  computed: {
-    readSpeed () {
-      return this.$store.state.readSpeed
-    },
+  data() {
+    return {
+      disks: []
+    }
+  },
+  provide() {
+    return {
+      disks: this.disks
+    };
+  },
+  created() {
+    ipcRenderer.send('fetch-disks')
+    ipcRenderer.on('update-disks', (event, data) => {
+      this.disks = data
+      console.log(this.disks)
+    })
   },
   components: {
     Chart,

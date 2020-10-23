@@ -51,7 +51,7 @@ body {
 }
 .slide-fade-enter,
 .slide-fade-leave-to {
-  transform: translateX(10px);
+  transform: translateX(100px);
   opacity: 0;
 }
 .main {
