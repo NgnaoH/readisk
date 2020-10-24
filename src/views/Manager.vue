@@ -42,7 +42,7 @@
               <div class="item">
                 <div class="write-speed">
                   <div class="sub">Capacity</div>
-                  <div class="time" ref="capacity"></div>
+                  <div class="time" ref="capacity"> {{this.disks[0].name}} </div>
                 </div>
               </div>
               <div class="item">
@@ -80,7 +80,8 @@ import { ipcRenderer } from "electron";
 export default {
   data() {
     return {
-      disks: []
+      diskLayout: [],
+      diskBlockdevice: []
     }
   },
   provide() {
@@ -89,11 +90,11 @@ export default {
     };
   },
   created() {
-    ipcRenderer.send('fetch-disks')
     ipcRenderer.on('update-disks', (event, data) => {
       this.disks = data
       console.log(this.disks)
     })
+    ipcRenderer.send('fetch-disks')
   },
   components: {
     Chart,

@@ -124,10 +124,15 @@ ipcMain.on('minimize-app', function (event) {
 // });
 
 
+// ipcMain.on('fetch-disks', (event) => {
+//   setInterval(() => {
+//     si.diskLayout(data => {
+//       event.reply('update-disks', data)
+//     })
+//   }, 1000);
+// })
 ipcMain.on('fetch-disks', (event) => {
-  setInterval(() => {
-    si.diskLayout(data => {
-      event.reply('update-disks', data)
-    })
-  }, 1000);
+  si.diskLayout(data => {
+    event.reply('update-disks', data)
+  })
 })
