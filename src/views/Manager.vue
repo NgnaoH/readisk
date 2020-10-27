@@ -4,13 +4,13 @@
       <div class="grid1 chart-wrapper">
         <div class="grid2">
           <div class="chart-activeRate">
-            <Chart type="line" :data="{}" :options="{}" />
+            
           </div>
         </div>
         <div class="grid2">
           <div class="title"></div>
           <div class="chart-transferRate">
-            <Chart type="line" :data="{}" :options="{}" />
+            
           </div>
           <div class="subtitle"></div>
         </div>
@@ -41,13 +41,14 @@
             <li class="item">
               <div class="item">
                 <div class="write-speed">
-                  <div class="sub">Capacity</div>
-                  <div class="time" ref="capacity"> {{this.disks[0].name}} </div>
+                  <div class="sub">Capacity:</div>
+                  <div v-if="disks.length" class="time" ref="capacity">{{Math.ceil(this.disks[0].size/1024/1024/1024)}} GB</div>
+                  <div v-else class="sub">loading...</div>
                 </div>
               </div>
               <div class="item">
                 <div class="write-speed">
-                  <div class="sub">Capacity</div>
+                  <div class="sub">Formatted</div>
                   <div class="time">10</div>
                 </div>
               </div>
@@ -59,15 +60,18 @@
               </div>
               <div class="item">
                 <div class="write-speed">
-                  <div class="sub">Capacity</div>
-                  <div class="time">10</div>
+                  <div class="sub">Type:</div>
+                  <div v-if="disks.length" class="time">{{this.disks[0].type}}</div>
+                  <div v-else class="sub">loading...</div>
                 </div>
               </div>
             </li>
           </ul>
         </div>
         <div class="grid2 storage">
-          <div class="grid3"></div>
+          <div class="grid3">
+            <DiskInformation/>
+          </div>
         </div>
       </div>
     </div>
@@ -75,34 +79,41 @@
 </template>
 
 <script>
-import Chart from "@/components/Chart.vue";
+//import Chart from "@/components/Chart.vue";
+import DiskInformation from '@/components/DiskInformation.vue';
 import { ipcRenderer } from "electron";
 export default {
+  components: {
+    //Chart,
+    DiskInformation
+  },
   data() {
     return {
-      diskLayout: [],
-      diskBlockdevice: []
+      disks: [],
+      blocks: []
     }
   },
   provide() {
     return {
-      disks: this.disks
+      disks: this.disks,
+      blocks: this.blocks
     };
   },
   created() {
-    ipcRenderer.on('update-disks', (event, data) => {
+    ipcRenderer.on('disk-layout', (event, data) => {
       this.disks = data
       console.log(this.disks)
     })
+    ipcRenderer.on('block-devices', (event, data) => {
+      this.blocks = data
+      console.log(this.blocks)
+    })
     ipcRenderer.send('fetch-disks')
-  },
-  components: {
-    Chart,
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 $align-item: 0.5rem;
 body {
   background: rgba($color: #fff, $alpha: 0.2);
@@ -172,6 +183,7 @@ ul {
               font-size: 12px;
             }
             .time {
+              transition: 0.5s;
               font-size: 20px;
             }
           }

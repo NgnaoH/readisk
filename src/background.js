@@ -133,6 +133,9 @@ ipcMain.on('minimize-app', function (event) {
 // })
 ipcMain.on('fetch-disks', (event) => {
   si.diskLayout(data => {
-    event.reply('update-disks', data)
+    event.reply('disk-layout', data)
+  })
+  si.blockDevices(data => {
+    event.reply('block-devices', data)
   })
 })
