@@ -42,7 +42,7 @@
               <div class="item">
                 <div class="write-speed">
                   <div class="sub">Capacity:</div>
-                  <div v-if="disks.length" class="time" ref="capacity">{{Math.ceil(this.disks[0].size/1024/1024/1024)}} GB</div>
+                  <div v-if="disks.length" class="time" ref="capacity">{{Math.ceil(disks[0].size/1024/1024/1024)}} GB</div>
                   <div v-else class="sub">loading...</div>
                 </div>
               </div>
@@ -61,7 +61,7 @@
               <div class="item">
                 <div class="write-speed">
                   <div class="sub">Type:</div>
-                  <div v-if="disks.length" class="time">{{this.disks[0].type}}</div>
+                  <div v-if="disks.length" class="time">{{disks[0].type}}</div>
                   <div v-else class="sub">loading...</div>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export default {
     })
     ipcRenderer.on('block-devices', (event, data) => {
       this.blocks = data
-      console.log(this.blocks)
+      console.log(data)
     })
     ipcRenderer.send('fetch-disks')
   },

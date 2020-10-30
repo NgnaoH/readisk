@@ -3457,6 +3457,11 @@ dir-glob@^2.0.0, dir-glob@^2.2.2:
   dependencies:
     path-type "^3.0.0"
 
+disk-stat@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/disk-stat/-/disk-stat-1.0.4.tgz#42a47930f5d4f2ceea9a261c02126954d117a6c4"
+  integrity sha1-QqR5MPXU8s7qmiYcAhJpVNEXpsQ=
+
 dmg-builder@22.9.1:
   version "22.9.1"
   resolved "https://registry.yarnpkg.com/dmg-builder/-/dmg-builder-22.9.1.tgz#64647224f37ee47fc9bd01947c21cc010a30511f"

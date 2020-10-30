@@ -3,47 +3,42 @@
     <ul class="list">
       <li class="item">
         <div class="active-time">
-          <div class="sub">Active time</div>
-          <div class="time">10 %</div>
+          <Information sub="Active time" main="" />
         </div>
         <div class="response-time">
-          <div class="sub">Average response time</div>
-          <div class="time">10</div>
+          <Information sub="Average respontime time" main="" />
         </div>
       </li>
       <li class="item">
         <div class="read-speed">
-          <div class="sub">Read speed</div>
-          <div class="time">10 KB/s</div>
+          <Information sub="Read speed" main="" />
         </div>
         <div class="write-speed">
-          <div class="sub">Write speed</div>
-          <div class="time">10 KB/s</div>
+          <Information sub="Write speed" main="" />
         </div>
       </li>
       <li class="item">
         <div class="item">
           <div class="write-speed">
-            <div class="sub">Capacity:</div>
-            <div class="time" ref="capacity"></div>
-            <div class="sub">loading...</div>
+            <Information
+              sub="Capacity"
+              :main="Math.ceil(disks[0].size / 1024 / 1024 / 1024) + ' GB'"
+            />
           </div>
         </div>
         <div class="item">
           <div class="write-speed">
-            <div class="sub">Formatted</div>
-            <div class="time">10</div>
+            <Information sub="Formatted" main="" />
           </div>
         </div>
         <div class="item">
           <div class="write-speed">
-            <div class="sub">Capacity</div>
-            <div class="time">10</div>
+            <Information sub="abc" main="" />
           </div>
         </div>
         <div class="item">
           <div class="write-speed">
-            <Information/>
+            <Information sub="Type" :main="disks[0].type" />
           </div>
         </div>
       </li>
@@ -52,11 +47,35 @@
 </template>
 
 <script>
-import Information from './Information.vue';
+import { ipcRenderer } from "electron";
+import Information from "./Information.vue";
 export default {
   components: {
     Information,
-  }
+  },
+  data() {
+    return {
+      disks: [],
+      blocks: [],
+    };
+  },
+  provide() {
+    return {
+      disks: this.disks,
+      blocks: this.disks,
+    };
+  },
+  created() {
+    ipcRenderer.on("disk-layout", (event, data) => {
+      this.disks = data;
+      console.log(data);
+    });
+    ipcRenderer.on("block-devices", (event, data) => {
+      this.blocks = data;
+      console.log(data);
+    });
+    ipcRenderer.send("fetch-disks");
+  },
 };
 </script>
 
@@ -79,20 +98,6 @@ ul {
         background-color: rgba($color: #fff, $alpha: 0.4);
         border-radius: 0.25rem;
         width: 100%;
-      }
-      .active-time,
-      .response-time,
-      .write-speed,
-      .read-speed,
-      .info {
-        .sub {
-          color: rgba($color: #000, $alpha: 0.6);
-          font-size: 12px;
-        }
-        .time {
-          transition: 0.5s;
-          font-size: 18px;
-        }
       }
     }
   }
