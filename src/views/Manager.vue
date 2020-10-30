@@ -4,7 +4,7 @@
       <div class="grid1 chart-wrapper">
         <div class="grid2">
           <div class="chart-activeRate">
-            
+            <Chart/>
           </div>
         </div>
         <div class="grid2">
@@ -79,12 +79,12 @@
 </template>
 
 <script>
-//import Chart from "@/components/Chart.vue";
+import Chart from "@/components/Chart.vue";
 import DiskInformation from '@/components/DiskInformation.vue';
 import { ipcRenderer } from "electron";
 export default {
   components: {
-    //Chart,
+    Chart,
     DiskInformation
   },
   data() {
