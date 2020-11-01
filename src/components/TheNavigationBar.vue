@@ -7,12 +7,12 @@
         </div>
       </li>
       <li @click="minimize" class="item btn">
-        <a href="">
+        <a>
           <Icon :size="24" icon="dash"></Icon>
         </a>
       </li>
-      <li @click="close" ref="close" class="item btn">
-        <a href="">
+      <li @click="close" class="item btn">
+        <a>
           <Icon :size="24" icon="x"></Icon>
         </a>
       </li>
@@ -41,11 +41,11 @@ export default {
 <style lang="scss">
 .title-bar {
   -webkit-app-region: drag;
-  z-index: 1;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 32px;
   .windows-menu {
     margin: 0;
     padding: 0;
@@ -56,7 +56,7 @@ export default {
       -webkit-app-region: no-drag;
     }
     .item {
-      padding: 0 0.5rem;
+      padding: 0 0.75rem;
       display: flex;
       align-items: center;
       transition: 0.5s;
@@ -64,7 +64,7 @@ export default {
       &:first-child {
         margin-right: auto;
         text-decoration: none;
-        background: -webkit-linear-gradient(rgba(#000, 1), rgba(#000, 0.4));
+        background: -webkit-linear-gradient(rgba(#000, 1), rgba(#000, 0.2));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 900;

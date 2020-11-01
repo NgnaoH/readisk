@@ -1,68 +1,59 @@
 <template>
-  <div id="app" class="app">
-    <div class="main">
-      <div>
-        <transition :name="transitionName" mode="out-in">
-          <router-view class="child-view" />
-        </transition>
-      </div>
+  <div id="app">
+    <TheNavigationBar class="nav-bar" />
+    <TheSidebarButton class="sidebar-button" />
+    <TheSidebar class="sidebar" />
+    <div class="main" @click="sidebarOff">
+      <router-view />
     </div>
-    <TitleBar />
-    <SideBar />
   </div>
 </template>
 
 <script>
-import SideBar from "@/components/SideBar.vue";
-import TitleBar from "@/components/TitleBar.vue";
+import "@/assets/scss/main.scss";
+import TheSidebar from "@/components/TheSidebar.vue";
+import TheSidebarButton from "@/components/TheSidebarButton.vue";
+import TheNavigationBar from "@/components/TheNavigationBar.vue";
+import { mapState, mapActions } from "vuex";
 export default {
   components: {
-    SideBar,
-    TitleBar,
+    TheSidebar,
+    TheNavigationBar,
+    TheSidebarButton,
   },
-  data() {
-    return {
-      transitionName: "slide-fade",
-    };
+  computed: {
+    ...mapState("sidebar", {
+      sidebarActive: "sidebarStatus",
+    }),
   },
-  watch: {
-    $route(to, from) {
-      const toDepth = to.path.split("/").length;
-      const fromDepth = from.path.split("/").length;
-      this.transitionName = toDepth < fromDepth ? "slide-fade" : "slide-fade";
-    },
+  methods: {
+    ...mapActions("sidebar", {
+      sidebarOff: "sidebarOff",
+    }),
   },
 };
 </script>
 
+
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 body {
-  overflow: hidden;
-}
-.app {
-  font-family: "Roboto", sans-serif;
-}
-.slide-fade-enter-active {
-  transition: all 0.2s ease;
-}
-.slide-fade-leave-active {
-  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter,
-.slide-fade-leave-to {
-  transform: translateX(100px);
-  opacity: 0;
+  background-color: var(--background-color);
+  height: 100vh;
 }
 .main {
-  padding: 1rem;
-  & > div {
-    z-index: 1;
-    position: absolute;
-    top: 1.6rem;
-    left: 0;
-    width: 100%;
-    height: 72vh;
+  padding-top: 40px;
+  margin: 0 0.5rem;
+}
+.sidebar-button {
+  position: fixed;
+  bottom: 0;
+  left: -10px;
+  z-index: 1000;
+  transition: 0.4s linear;
+  transform: translateX(-8px);
+  &:hover {
+    transition: 0.4s linear;
+    transform: translateX(-0px);
   }
 }
 </style>
