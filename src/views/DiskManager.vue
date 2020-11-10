@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="disk-manager">
     <div class="columns">
       <div class="column is-2">
         <DiskList />
@@ -37,3 +37,12 @@ export default {
   },
 };
 </script>
+<style scoped lang="scss">
+.disk-manager {
+  height: 100%;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+</style>

@@ -34,7 +34,6 @@ export default {
 };
 </script>
 
-
 <style lang="scss">
 body {
   background-color: var(--background-color);
@@ -43,6 +42,7 @@ body {
 .main {
   padding-top: 40px;
   margin: 0 1rem;
+  height: 100vh;
 }
 .sidebar-button {
   position: fixed;
