@@ -71,11 +71,11 @@ export default {
   bottom: 0;
   height: 48px;
   z-index: 900;
-  background-color: rgba($color: #fff, $alpha: 0.4);
+  background-color: rgba($color: #77a9da, $alpha: .6);
   border-top-right-radius: 999px;
   border-bottom-right-radius: 999px;
   opacity: 0;
-  transition: left 0.4s linear, opacity 0.8s linear;
+  transition: left 0.4s linear, opacity .8s linear;
   &.is-active {
     left: 0;
     opacity: 1;
@@ -92,10 +92,10 @@ export default {
       width: 20%;
       border-radius: 999px;
       cursor: pointer;
-      transition: 0.4s linear;
+      transition: .4s linear;
       &:hover {
-        background-color: rgba($color: #fff, $alpha: 0.3);
-        transition: 0.4s linear;
+        background-color: rgba($color: #77a9da, $alpha: 1);
+        transition: .4s linear;
         transform: translate(8px);
       }
       a {
@@ -105,5 +105,8 @@ export default {
       }
     }
   }
+}
+.icon {
+  fill: rgba($color: #0F0F0F, $alpha: .8);
 }
 </style>

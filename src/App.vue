@@ -42,7 +42,7 @@ body {
 }
 .main {
   padding-top: 40px;
-  margin: 0 0.5rem;
+  margin: 0 1rem;
 }
 .sidebar-button {
   position: fixed;

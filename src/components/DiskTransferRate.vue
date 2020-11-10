@@ -1,13 +1,16 @@
 <template>
-  
+  <div class="transfer-rate animate__animated animate__fadeInRight"></div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.transfer-rate {
+  width: 100%;
+  height: 32vh;
+  background-color: rgba($color: #ababab, $alpha: 0.1);
+  border-radius: 1rem;
+}
 </style>

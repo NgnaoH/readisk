@@ -18,9 +18,9 @@ export default {
   },
   methods: {
     ...mapActions("sidebar", {
-      toggleSidebar: "toggleSidebar"
-    })
-  }
+      toggleSidebar: "toggleSidebar",
+    }),
+  },
 };
 </script>
 
@@ -34,8 +34,7 @@ export default {
   padding-left: 10px;
   border-top-right-radius: 999px;
   border-bottom-right-radius: 999px;
-  background-color: rgba($color: #fff, $alpha: 0.4);
-  fill: black;
+  background-color: rgba($color: #77a9da, $alpha: 1);
   .icon {
     transition: 0.8s ease;
   }
@@ -44,5 +43,8 @@ export default {
       transform: rotateY(180deg);
     }
   }
+}
+.icon {
+  fill: rgba($color: #0F0F0F, $alpha: .8);
 }
 </style>

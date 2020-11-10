@@ -59,12 +59,12 @@ export default {
       padding: 0 0.75rem;
       display: flex;
       align-items: center;
-      transition: 0.5s;
+      transition: .4s ease;
       cursor: pointer;
       &:first-child {
         margin-right: auto;
         text-decoration: none;
-        background: -webkit-linear-gradient(rgba(#000, 1), rgba(#000, 0.2));
+        background: -webkit-linear-gradient(rgba(#fff, 1), rgba(#fff, 0.6), rgba(#fff, 0));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 900;
@@ -74,14 +74,22 @@ export default {
         cursor: default;
       }
       .icon {
-        fill: rgba(#000, 0.7);
+        transition: .4s ease;
+        fill: rgba(#fff, 1);
       }
       &:hover {
-        background-color: rgba($color: #fff, $alpha: 0.4);
+        transition: .4s ease;
+        background-color: rgba($color: #77a9da, $alpha: 1);
+        .icon {
+          transition: .4s ease;
+          fill: #0F0F0F;
+        }
       }
       &:last-child {
         &:hover {
-          background-color: rgba($color: red, $alpha: 0.4);
+          .icon {
+            fill: #0F0F0F;
+          }
         }
       }
     }
