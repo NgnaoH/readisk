@@ -34,7 +34,7 @@ export default {
   padding-left: 10px;
   border-top-right-radius: 999px;
   border-bottom-right-radius: 999px;
-  background-color: rgba($color: #77a9da, $alpha: 1);
+  background-color: rgba($color: #27dfee, $alpha: .6);
   .icon {
     transition: 0.8s ease;
   }
@@ -45,6 +45,6 @@ export default {
   }
 }
 .icon {
-  fill: rgba($color: #0F0F0F, $alpha: .8);
+  fill: rgba($color: #000, $alpha: 1);
 }
 </style>

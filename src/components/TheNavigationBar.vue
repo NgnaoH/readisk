@@ -52,6 +52,7 @@ export default {
     list-style: none;
     display: flex;
     justify-content: flex-end;
+    background-color: rgba(#ababab, .3);
     .btn {
       -webkit-app-region: no-drag;
     }
@@ -64,7 +65,7 @@ export default {
       &:first-child {
         margin-right: auto;
         text-decoration: none;
-        background: -webkit-linear-gradient(rgba(#fff, 1), rgba(#fff, 0.6), rgba(#fff, 0));
+        background: -webkit-linear-gradient(rgba(#12D1E2, 1), rgba(#12D1E2, 0.9), rgba(#12D1E2, 0));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 900;
@@ -75,21 +76,14 @@ export default {
       }
       .icon {
         transition: .4s ease;
-        fill: rgba(#fff, 1);
+        fill: rgba(#000, 1);
       }
       &:hover {
         transition: .4s ease;
-        background-color: rgba($color: #77a9da, $alpha: 1);
+        background-color: rgba($color: #27dfee, $alpha: .8);
         .icon {
           transition: .4s ease;
-          fill: #0F0F0F;
-        }
-      }
-      &:last-child {
-        &:hover {
-          .icon {
-            fill: #0F0F0F;
-          }
+          fill: #fff;
         }
       }
     }

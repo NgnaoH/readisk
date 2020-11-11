@@ -10,7 +10,7 @@ export default {};
 .transfer-rate {
   width: 100%;
   height: 32vh;
-  background-color: rgba($color: #ababab, $alpha: 0.1);
+  background-color: rgba($color: #ababab, $alpha: .3);
   border-radius: 1rem;
 }
 </style>

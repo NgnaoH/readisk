@@ -24,7 +24,7 @@ export default {
 .disk-parameter {
   width: 100%;
   height: 40vh;
-  background-color: rgba($color: #ababab, $alpha: .1);
+  background-color: rgba($color: #ababab, $alpha: .3);
   border-radius: 1rem;
 }
 </style>

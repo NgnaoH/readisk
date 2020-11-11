@@ -71,7 +71,7 @@ export default {
   bottom: 0;
   height: 48px;
   z-index: 900;
-  background-color: rgba($color: #77a9da, $alpha: .6);
+  background-color: rgba($color: #27dfee, $alpha: .4);
   border-top-right-radius: 999px;
   border-bottom-right-radius: 999px;
   opacity: 0;
@@ -94,7 +94,7 @@ export default {
       cursor: pointer;
       transition: .4s linear;
       &:hover {
-        background-color: rgba($color: #77a9da, $alpha: 1);
+        background-color: rgba($color: #27dfee, $alpha: .6);
         transition: .4s linear;
         transform: translate(8px);
       }
@@ -107,6 +107,6 @@ export default {
   }
 }
 .icon {
-  fill: rgba($color: #0F0F0F, $alpha: .8);
+  fill: rgba($color: #000, $alpha: 1);
 }
 </style>

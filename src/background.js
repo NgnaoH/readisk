@@ -11,123 +11,106 @@ import si from "systeminformation";
 let win;
 
 // Scheme must be registered before the app is ready
-protocol.registerSchemesAsPrivileged([
-  {
+protocol.registerSchemesAsPrivileged([{
     scheme: "app",
     privileges: {
-      secure: true,
-      standard: true,
+        secure: true,
+        standard: true,
     },
-  },
-]);
+}, ]);
 
 function createWindow() {
-  // Create the browser window.
-  win = new BrowserWindow({
-    width: 896,
-    height: 560,
-    maxWidth: 896,
-    maxHeight: 560,
-    resizable: false,
-    frame: false,
-    transparent: true,
-    webPreferences: {
-      // Use pluginOptions.nodeIntegration, leave this alone
-      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: true,
-    },
-  });
+    // Create the browser window.
+    win = new BrowserWindow({
+        width: 896,
+        height: 560,
+        maxWidth: 896,
+        maxHeight: 560,
+        resizable: false,
+        frame: false,
+        transparent: true,
+        webPreferences: {
+            // Use pluginOptions.nodeIntegration, leave this alone
+            // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
+            nodeIntegration: true,
+        },
+    });
 
-  if (process.env.WEBPACK_DEV_SERVER_URL) {
-    // Load the url of the dev server if in development mode
-    win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
-    if (!process.env.IS_TEST) win.webContents.openDevTools();
-  } else {
-    createProtocol("app");
-    // Load the index.html when not in development
-    win.loadURL("app://./index.html");
-  }
+    if (process.env.WEBPACK_DEV_SERVER_URL) {
+        // Load the url of the dev server if in development mode
+        win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
+        if (!process.env.IS_TEST) win.webContents.openDevTools();
+    } else {
+        createProtocol("app");
+        // Load the index.html when not in development
+        win.loadURL("app://./index.html");
+    }
 
-  win.on("closed", () => {
-    win = null;
-  });
+    win.on("closed", () => {
+        win = null;
+    });
 }
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
+    // On macOS it is common for applications and their menu bar
+    // to stay active until the user quits explicitly with Cmd + Q
+    if (process.platform !== "darwin") {
+        app.quit();
+    }
 });
 
 app.on("activate", () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (win === null) {
-    createWindow();
-  }
+    // On macOS it's common to re-create a window in the app when the
+    // dock icon is clicked and there are no other windows open.
+    if (win === null) {
+        createWindow();
+    }
 });
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on("ready", async () => {
-  if (isDevelopment && !process.env.IS_TEST) {
-    // Install Vue Devtools
-    try {
-      await installExtension(VUEJS_DEVTOOLS);
-    } catch (e) {
-      console.error("Vue Devtools failed to install:", e.toString());
+app.on("ready", async() => {
+    if (isDevelopment && !process.env.IS_TEST) {
+        // Install Vue Devtools
+        try {
+            await installExtension(VUEJS_DEVTOOLS);
+        } catch (e) {
+            console.error("Vue Devtools failed to install:", e.toString());
+        }
     }
-  }
-  createWindow();
+    createWindow();
 });
 
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
-  if (process.platform === "win32") {
-    process.on("message", (data) => {
-      if (data === "graceful-exit") {
-        app.quit();
-      }
-    });
-  } else {
-    process.on("SIGTERM", () => {
-      app.quit();
-    });
-  }
+    if (process.platform === "win32") {
+        process.on("message", (data) => {
+            if (data === "graceful-exit") {
+                app.quit();
+            }
+        });
+    } else {
+        process.on("SIGTERM", () => {
+            app.quit();
+        });
+    }
 }
 
 ipcMain.on("close-app", function(event) {
-  app.exit();
+    app.exit();
 });
 
 ipcMain.on("minimize-app", function(event) {
-  win.minimize();
+    win.minimize();
 });
 
-// exec('winsat disk -drive d', (error, stdout, stderr) => {
-//   if (error) {
-//     console.log(`exec error: ${error}`);
-//     return;
-//   }
-//   console.log(`stdout: ${stdout}`);
-// });
-
-// ipcMain.on('fetch-disks', (event) => {
-//   setInterval(() => {
-//     si.diskLayout(data => {
-//       event.reply('update-disks', data)
-//     })
-//   }, 1000);
-// })
 ipcMain.on("fetch-disks", (event) => {
-  si.diskLayout((data) => {
-    event.reply("disk-layout", data);
-  });
-  si.blockDevices((data) => {
-    event.reply("block-devices", data);
-  });
+    si.diskLayout((data) => {
+        event.reply("disk-layout", data);
+    });
+    si.blockDevices((data) => {
+        event.reply("block-devices", data);
+    });
 });
