@@ -1,45 +1,61 @@
 <template>
   <div class="disk-list animate__animated animate__fadeInRight">
-    <div class="list-item" v-for="n in 10" :key="n.id">
-      {{n}}
+    <div class="list">
+      <div
+        class="list-item animate__animated animate__fadeInUp"
+        v-for="disk in disks"
+        :key="disk.id"
+      >
+        {{ disk.name }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import {ipcRenderer, IpcRenderer} from 'electron';
+import { ipcRenderer, IpcRenderer } from "electron";
 export default {
   data() {
     return {
       disks: [],
-    }
+    };
   },
   created() {
-    ipcRenderer.on("disk-layout", (event,data) => {
-      this.disks = data
-    })
-  }
-}
+    ipcRenderer.on("disk-layout", (event, data) => {
+      this.disks = data;
+    });
+  },
+};
 </script>
 
 <style scoped lang="scss">
-.disk-list{
+.disk-list {
   width: 100%;
   height: 32vh;
-  background-color: rgba($color: #ababab, $alpha: .3);
+  background-color: rgba($color: #ababab, $alpha: 0.3);
   border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
   overflow: auto;
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar {
     display: none;
   }
 }
-.list-item {
-  width: 100%;
-  height: 100px;
-  
-  background-color: red;
+.list {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
 }
-
+.list-item {
+  user-select: none;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #eeecec;
+  text-align: center;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  cursor: pointer;
+}
 </style>
