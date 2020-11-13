@@ -52,7 +52,8 @@ export default {
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    background-color: rgba(#ababab, .3);
+    background-color: rgba(#ababab, 0.4);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
     .btn {
       -webkit-app-region: no-drag;
     }
@@ -60,12 +61,16 @@ export default {
       padding: 0 0.75rem;
       display: flex;
       align-items: center;
-      transition: .4s ease;
+      transition: 0.4s ease;
       cursor: pointer;
       &:first-child {
         margin-right: auto;
         text-decoration: none;
-        background: -webkit-linear-gradient(rgba(#12D1E2, 1), rgba(#12D1E2, 0.9), rgba(#12D1E2, 0));
+        background: -webkit-linear-gradient(
+          rgba(#12d1e2, 1),
+          rgba(#12d1e2, 0.9),
+          rgba(#12d1e2, 0)
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 900;
@@ -75,14 +80,14 @@ export default {
         cursor: default;
       }
       .icon {
-        transition: .4s ease;
+        transition: 0.4s ease;
         fill: rgba(#000, 1);
       }
       &:hover {
-        transition: .4s ease;
-        background-color: rgba($color: #27dfee, $alpha: .8);
+        transition: 0.4s ease;
+        background-color: rgba($color: #27dfee, $alpha: 0.8);
         .icon {
-          transition: .4s ease;
+          transition: 0.4s ease;
           fill: #fff;
         }
       }

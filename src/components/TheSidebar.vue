@@ -4,7 +4,7 @@
       <ul class="menu-list">
         <li class="menu-item">
           <router-link
-            @click="sidebarOff"
+            
             :to="{ name: 'Home' }"
             exact-active-class="is-active"
           >
@@ -13,7 +13,7 @@
         </li>
         <li class="menu-item">
           <router-link
-            @click="sidebarOff"
+            
             :to="{ name: 'DiskManager' }"
             exact-active-class="is-active"
           >
@@ -22,7 +22,7 @@
         </li>
         <li class="menu-item">
           <router-link
-            @click="sidebarOff"
+            
             :to="{ name: 'About' }"
             exact-active-class="is-active"
           >
@@ -31,7 +31,7 @@
         </li>
         <li class="menu-item">
           <router-link
-            @click="sidebarOff"
+            
             :to="{ name: 'About' }"
             exact-active-class="is-active"
           >
@@ -55,11 +55,11 @@ export default {
       sidebarActive: "sidebarStatus",
     }),
   },
-  methods: {
-    ...mapActions("sidebar", {
-      sidebarOff: "sidebarOff",
-    }),
-  },
+  // methods: {
+  //   ...mapActions("sidebar", {
+  //     sidebarOff: "sidebarOff",
+  //   }),
+  // },
 };
 </script>
 
@@ -71,11 +71,11 @@ export default {
   bottom: 0;
   height: 48px;
   z-index: 900;
-  background-color: rgba($color: #27dfee, $alpha: .4);
+  background-color: rgba($color: #27dfee, $alpha: 0.4);
   border-top-right-radius: 999px;
   border-bottom-right-radius: 999px;
   opacity: 0;
-  transition: left 0.4s linear, opacity .8s linear;
+  transition: left 0.4s linear, opacity 0.8s linear;
   &.is-active {
     left: 0;
     opacity: 1;
@@ -92,10 +92,10 @@ export default {
       width: 20%;
       border-radius: 999px;
       cursor: pointer;
-      transition: .4s linear;
+      transition: 0.4s linear;
       &:hover {
-        background-color: rgba($color: #27dfee, $alpha: .6);
-        transition: .4s linear;
+        background-color: rgba($color: #27dfee, $alpha: 0.6);
+        transition: 0.4s linear;
         transform: translate(8px);
       }
       a {

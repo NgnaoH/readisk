@@ -44,5 +44,6 @@ export default {
   &::-webkit-scrollbar {
     display: none;
   }
+  padding: 0 1rem;
 }
 </style>

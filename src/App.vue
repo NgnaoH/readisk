@@ -40,8 +40,8 @@ body {
   height: 100vh;
 }
 .main {
-  padding-top: 40px;
-  margin: 0 1rem;
+  padding-top: 44px;
+  margin: 0;
   height: 100vh;
 }
 .sidebar-button {

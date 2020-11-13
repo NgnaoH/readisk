@@ -1,7 +1,11 @@
 <template>
   <div class="disk-information animate__animated animate__fadeInUp">
-    <div class="list">
-      <div class="list-item" v-for="(block, index) in blocks" :key="block.id">
+    <div class="list" v-if="blocks.length">
+      <div
+        class="list-item animate__animated animate__fadeInUp"
+        v-for="(block, index) in blocks"
+        :key="block.id"
+      >
         <div class="informations">
           <div class="name">
             <div v-if="block.label">
@@ -14,13 +18,19 @@
           </div>
         </div>
         <div class="opacity">
-          <div>
-            Space: {{ Math.floor(100 - fss[index].use) }}%
+          <div class="status">
+            {{ Math.floor(fss[index].use) }}% Used -
+            {{
+              Math.floor(
+                (fss[index].size - fss[index].used) / 1024 / 1024 / 1024
+              )
+            }}
+            GB free of {{ Math.floor(fss[index].size / 1024 / 1024 / 1024) }} GB
           </div>
           <div class="size">
             <div
               class="used"
-              :style="{ width: `${fss[index].use}` + '%' }"
+              :style="fss.length ? {width: `${fss[index].use}` + '%'} : {width: '0%'}"
             ></div>
           </div>
         </div>
@@ -32,9 +42,6 @@
 <script>
 import { ipcRenderer } from "electron";
 export default {
-  props: {
-    use: Number,
-  },
   data() {
     return {
       blocks: [],
@@ -44,11 +51,9 @@ export default {
   created() {
     ipcRenderer.on("block-devices", (event, data) => {
       this.blocks = data;
-      console.log(data);
     });
     ipcRenderer.on("fs-size", (event, data) => {
       this.fss = data;
-      console.log(data);
     });
   },
 };
@@ -61,8 +66,14 @@ export default {
   background-color: rgba($color: #ababab, $alpha: 0.3);
   border-radius: 1rem;
   overflow: auto;
+  user-select: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.8s;
+  &:hover {
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
   }
 }
 .list {
@@ -76,18 +87,28 @@ export default {
   margin-bottom: 1rem;
   display: flex;
   .informations {
+    padding-left: 0.75rem;
+    border-left: 4px dashed #eeecec;
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
   .opacity {
     width: 60%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    .status {
+      font-size: 11px;
+    }
     .size {
       width: 100%;
       align-items: center;
       border: 2px solid #eeecec;
       height: 50%;
       .used {
+        transition: width 1s ease;
         width: 0;
         height: 100%;
         background-color: #eeecec;

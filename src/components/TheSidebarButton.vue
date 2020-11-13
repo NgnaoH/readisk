@@ -34,7 +34,12 @@ export default {
   padding-left: 10px;
   border-top-right-radius: 999px;
   border-bottom-right-radius: 999px;
-  background-color: rgba($color: #27dfee, $alpha: .6);
+  background-color: rgba($color: #27dfee, $alpha: 0.6);
+  box-shadow: 0 0 10px 0 rgba(39, 223, 238, 0.3);
+  transition: box-shadow 0.5s;
+  &:hover {
+    box-shadow: 20px 15px 50px 0 rgba(39, 223, 238, 1);
+  }
   .icon {
     transition: 0.8s ease;
   }

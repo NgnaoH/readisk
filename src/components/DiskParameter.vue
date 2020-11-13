@@ -2,47 +2,59 @@
   <div class="disk-parameter animate__animated animate__fadeInUp">
     <div class="list" v-if="disks.length">
       <div class="list-item-name animate__animated animate__fadeInUp">
-        {{ disks[0].name }} - {{ disks[0].interfaceType }}
+        {{ disks[index].name }} - {{ disks[index].interfaceType }}
       </div>
       <div class="list-item animate__animated animate__fadeInUp">
         <div class="sub-item bytes-sector">
-          <div class="title-para">Bytes / sector</div>
+          <div class="title-para">
+            Bytes / sector
+          </div>
           <div class="parameter">
-            {{ disks[0].bytesPerSector }}
+            {{ disks[index].bytesPerSector }}
           </div>
         </div>
         <div class="sub-item sectors-track">
-          <div class="title-para">Sectors / track</div>
+          <div class="title-para">
+            Sectors / track
+          </div>
           <div class="parameter">
-            {{ disks[0].sectorsPerTrack }}
+            {{ disks[index].sectorsPerTrack }}
           </div>
         </div>
       </div>
       <div class="list-item animate__animated animate__fadeInUp">
         <div class="sub-item tracks-cylinder">
-          <div class="title-para">Tracks / cylinder</div>
+          <div class="title-para">
+            Tracks / cylinder
+          </div>
           <div class="parameter">
-            {{ disks[0].tracksPerCylinder }}
+            {{ disks[index].tracksPerCylinder }}
           </div>
         </div>
         <div class="sub-item cylinders">
-          <div class="title-para">Cylinders</div>
+          <div class="title-para">
+            Cylinders
+          </div>
           <div class="parameter">
-            {{ disks[0].totalCylinders }}
+            {{ disks[index].totalCylinders }}
           </div>
         </div>
       </div>
       <div class="list-item animate__animated animate__fadeInUp">
         <div class="sub-item capacity">
-          <div class="title-para">Capacity</div>
-          <div class="parameter">
-            {{ Math.floor(disks[0].size / 1024 / 1024 / 1024) }} GB
+          <div class="title-para ">
+            Capacity
+          </div>
+          <div class="parameter ">
+            {{ Math.floor(disks[index].size / 1024 / 1024 / 1024) }} GB
           </div>
         </div>
         <div class="sub-item type">
-          <div class="title-para">Type</div>
-          <div class="parameter">
-            {{ disks[0].type }}
+          <div class="title-para ">
+            Type
+          </div>
+          <div class="parameter ">
+            {{ disks[index].type }}
           </div>
         </div>
       </div>
@@ -52,6 +64,7 @@
 
 <script>
 import { ipcRenderer } from "electron";
+import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   data() {
     return {
@@ -61,8 +74,12 @@ export default {
   created() {
     ipcRenderer.on("disk-layout", (event, data) => {
       this.disks = data;
-      console.log(data);
     });
+  },
+  computed: {
+    ...mapState("currentData", {
+      index: "current",
+    }),
   },
 };
 </script>
@@ -73,6 +90,11 @@ export default {
   height: 40vh;
   background-color: rgba($color: #ababab, $alpha: 0.3);
   border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.8s;
+  &:hover {
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
+  }
 }
 .list {
   height: 100%;
@@ -82,10 +104,11 @@ export default {
   justify-content: space-between;
 }
 .list-item-name {
-  border: 1px solid #eeecec;
+  border: 2px solid #eeecec;
   border-radius: 1rem;
   text-align: center;
   padding: 2px;
+  user-select: none;
 }
 .list-item {
   width: 100%;
@@ -95,9 +118,9 @@ export default {
   padding: 4px;
 }
 .sub-item {
-  padding-left: 1rem;
+  padding-left: 0.75rem;
+  border-left: 4px dashed #eeecec;
   width: 100%;
-  border-left: 2px dashed #eeecec;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

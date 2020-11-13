@@ -6,25 +6,26 @@ import About from "@/views/About.vue";
 
 Vue.use(VueRouter);
 
-const routes = [{
-        path: "/",
-        name: "Home",
-        component: Home,
-    },
-    {
-        path: "/manager",
-        name: "DiskManager",
-        component: DiskManager,
-    },
-    {
-        path: "/about",
-        name: "About",
-        component: About,
-    },
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/manager",
+    name: "DiskManager",
+    component: DiskManager,
+  },
+  {
+    path: "/about",
+    name: "About",
+    component: About,
+  },
 ];
 
 const router = new VueRouter({
-    routes,
+  routes,
 });
 
 export default router;
