@@ -38,7 +38,7 @@ export default {
   box-shadow: 0 0 10px 0 rgba(39, 223, 238, 0.3);
   transition: box-shadow 0.5s;
   &:hover {
-    box-shadow: 20px 15px 50px 0 rgba(39, 223, 238, 1);
+    box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, .5);
   }
   .icon {
     transition: 0.8s ease;

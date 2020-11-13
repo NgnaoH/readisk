@@ -1,16 +1,26 @@
 <template>
-  <div class="home animate__animated animate__fadeInUp">
-    <div class="column is-12">
-      Home page
+  <div class="home">
+    <div class="columns">
+      <div class="card-content column is-6">
+        Home page
+      </div>
+      <div class="card-content column is-6">
+        Home page
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
 <style scoped lang="scss">
-  .home {
-  }
+.home {
+  height: 100%;
+  padding: 0 1rem;
+}
+.card-content {
+  height: 54vh;
+  background-color: white;
+}
 </style>

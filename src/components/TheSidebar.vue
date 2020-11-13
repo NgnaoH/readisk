@@ -3,17 +3,12 @@
     <aside class="menu">
       <ul class="menu-list">
         <li class="menu-item">
-          <router-link
-            
-            :to="{ name: 'Home' }"
-            exact-active-class="is-active"
-          >
+          <router-link :to="{ name: 'Home' }" exact-active-class="is-active">
             <Icon :size="28" icon="home"></Icon>
           </router-link>
         </li>
         <li class="menu-item">
           <router-link
-            
             :to="{ name: 'DiskManager' }"
             exact-active-class="is-active"
           >
@@ -21,20 +16,12 @@
           </router-link>
         </li>
         <li class="menu-item">
-          <router-link
-            
-            :to="{ name: 'About' }"
-            exact-active-class="is-active"
-          >
+          <router-link :to="{ name: 'About' }" exact-active-class="is-active">
             <Icon :size="28" icon="info"></Icon>
           </router-link>
         </li>
         <li class="menu-item">
-          <router-link
-            
-            :to="{ name: 'About' }"
-            exact-active-class="is-active"
-          >
+          <router-link :to="{ name: 'About' }" exact-active-class="is-active">
             <Icon :size="28" icon="sun"></Icon>
           </router-link>
         </li>
@@ -94,14 +81,18 @@ export default {
       cursor: pointer;
       transition: 0.4s linear;
       &:hover {
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
         background-color: rgba($color: #27dfee, $alpha: 0.6);
-        transition: 0.4s linear;
-        transform: translate(8px);
+        transition: 0.2s linear;
       }
       a {
         width: 100%;
         text-align: center;
         background-color: rgba($color: #000000, $alpha: 0);
+      }
+      &:active {
+        background-color: rgba($color: #27dfee, $alpha: 0.4);
+        box-shadow: 0 0px 10px 0 rgba(39, 223, 238, 0.5);
       }
     }
   }

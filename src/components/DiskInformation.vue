@@ -1,6 +1,6 @@
 <template>
   <div class="disk-information animate__animated animate__fadeInUp">
-    <div class="list" v-if="blocks.length">
+    <div class="list" v-if="fss.length">
       <div
         class="list-item animate__animated animate__fadeInUp"
         v-for="(block, index) in blocks"
@@ -30,7 +30,7 @@
           <div class="size">
             <div
               class="used"
-              :style="fss.length ? {width: `${fss[index].use}` + '%'} : {width: '0%'}"
+              :style="{ width: `${fss[index].use}` + '%'}"
             ></div>
           </div>
         </div>
