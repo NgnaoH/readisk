@@ -52,8 +52,8 @@ export default {
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    background-color: rgba(#ababab, 0.4);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    // background-color: rgba(#ababab, 0.4);
+    // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
     .btn {
       -webkit-app-region: no-drag;
     }

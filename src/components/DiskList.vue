@@ -75,11 +75,12 @@ export default {
     }
     cursor: pointer;
     box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.5);
-    transition: box-shadow 0.3s;
+    transition: box-shadow 0.5s;
     &:hover {
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
     }
     &:active {
+      transition: box-shadow 0.1s;
       box-shadow: 0 0px 0 0 rgba(0, 0, 0, 0.5);
     }
   }

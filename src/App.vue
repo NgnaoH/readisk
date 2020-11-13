@@ -40,7 +40,7 @@ body {
   height: 100vh;
 }
 .main {
-  padding-top: 44px;
+  padding-top: 32px;
   margin: 0;
   height: 100vh;
 }
