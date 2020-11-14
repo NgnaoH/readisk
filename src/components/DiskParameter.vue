@@ -88,7 +88,8 @@ export default {
 .disk-parameter {
   width: 100%;
   height: 40vh;
-  background-color: rgba($color: #ababab, $alpha: 0.3);
+  // background-color: #dbdbdb;
+  background-color: rgba(#12d1e2, 0.1);
   border-radius: 1rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.8s;
@@ -104,7 +105,7 @@ export default {
   justify-content: space-between;
 }
 .list-item-name {
-  border: 2px solid #eeecec;
+  border: 2px solid rgba(#12d1e2, 0.5);
   border-radius: 1rem;
   text-align: center;
   padding: 2px;
@@ -118,8 +119,8 @@ export default {
   padding: 4px;
 }
 .sub-item {
-  padding-left: 0.75rem;
-  border-left: 4px dashed #eeecec;
+  padding-left: 0.5rem;
+  border-left: 3px dashed rgba(#12d1e2, 0.5);
   width: 100%;
   display: flex;
   flex-direction: column;

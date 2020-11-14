@@ -42,7 +42,7 @@ export default {
   user-select: none;
   width: 100%;
   height: 32vh;
-  background-color: rgba($color: #ababab, $alpha: 0.3);
+  background-color: rgba(#12d1e2, 0.1);
   border-radius: 1rem;
   overflow: auto;
   &::-webkit-scrollbar {
@@ -60,28 +60,60 @@ export default {
   flex-direction: column;
 }
 .list-item {
-  border: 1px solid #eeecec;
   margin-bottom: 1rem;
   border-radius: 0.6rem;
   & > div {
     border-radius: 0.5rem;
     height: 48px;
     padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    word-wrap: break-word;
     overflow: auto;
     &::-webkit-scrollbar {
       display: none;
     }
     cursor: pointer;
     box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.5);
-    transition: box-shadow 0.5s;
+    transition: 0.5s;
     &:hover {
+      background-color: rgba(#12d1e2, 0.4);
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
     }
     &:active {
-      transition: box-shadow 0.1s;
+      transition: box-shadow 0.05s;
       box-shadow: 0 0px 0 0 rgba(0, 0, 0, 0.5);
+    }
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: rgba(#eeecec, 0.4);
+      transform: rotate(45deg);
+      left: -110%;
+      top: 90%;
+    }
+    &:hover::before {
+      animation: a 1s 1;
+      top: -10%;
+      left: 80%;
+    }
+    @keyframes a {
+      0% {
+        top: -110%;
+        left: 90%;
+      }
+      50% {
+        top: 10%;
+        left: -200%;
+      }
+      100% {
+        top: -10%;
+        left: 90%;
+      }
     }
   }
 }

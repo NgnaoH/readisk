@@ -1,10 +1,8 @@
 <template>
   <div class="title-bar">
     <ul class="windows-menu">
-      <li class="item">
-        <div>
-          Readisk
-        </div>
+      <li class="item animate__animated animate__headShake">
+        Readisk
       </li>
       <li @click="minimize" class="item btn">
         <a>
@@ -68,7 +66,7 @@ export default {
         text-decoration: none;
         background: -webkit-linear-gradient(
           rgba(#12d1e2, 1),
-          rgba(#12d1e2, 0.9),
+          rgba(#12d1e2, 0.7),
           rgba(#12d1e2, 0)
         );
         -webkit-background-clip: text;

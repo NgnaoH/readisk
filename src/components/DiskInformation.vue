@@ -19,6 +19,7 @@
         </div>
         <div class="opacity">
           <div class="status">
+            <Icon icon="inbox"/> 
             {{ Math.floor(fss[index].use) }}% Used -
             {{
               Math.floor(
@@ -41,7 +42,11 @@
 
 <script>
 import { ipcRenderer } from "electron";
+import Icon from '@/components/Icon.vue';
 export default {
+  components: {
+    Icon,
+  },
   data() {
     return {
       blocks: [],
@@ -63,7 +68,8 @@ export default {
 .disk-information {
   width: 100%;
   height: 40vh;
-  background-color: rgba($color: #ababab, $alpha: 0.3);
+  // background-color: #dbdbdb;
+  background-color: rgba(#12d1e2, 0.1);
   border-radius: 1rem;
   overflow: auto;
   user-select: none;
@@ -87,31 +93,30 @@ export default {
   margin-bottom: 1rem;
   display: flex;
   .informations {
-    padding-left: 0.75rem;
-    border-left: 4px dashed #eeecec;
     width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .opacity {
     width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-bottom: 2px;
     .status {
       font-size: 11px;
     }
     .size {
       width: 100%;
       align-items: center;
-      border: 2px solid #eeecec;
+      border: 2px solid rgba(#12d1e2, 0.5);
       height: 50%;
       .used {
         transition: width 1s ease;
         width: 0;
         height: 100%;
-        background-color: #eeecec;
+        background-color: rgba(#12d1e2, 0.5);
       }
     }
   }
