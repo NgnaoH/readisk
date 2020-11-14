@@ -66,7 +66,7 @@ export default {
         text-decoration: none;
         background: -webkit-linear-gradient(
           rgba(#12d1e2, 1),
-          rgba(#12d1e2, 0.7),
+          rgba(#12d1e2, 0.5),
           rgba(#12d1e2, 0)
         );
         -webkit-background-clip: text;

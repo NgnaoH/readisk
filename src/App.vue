@@ -56,4 +56,8 @@ body {
     transform: translateX(-0px);
   }
 }
+::selection{
+  background: rgba($color: #27dfee, $alpha: 0.7);
+  color: #eeecec;
+}
 </style>

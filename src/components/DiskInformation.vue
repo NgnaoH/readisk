@@ -68,7 +68,6 @@ export default {
 .disk-information {
   width: 100%;
   height: 40vh;
-  // background-color: #dbdbdb;
   background-color: rgba(#12d1e2, 0.1);
   border-radius: 1rem;
   overflow: auto;
@@ -116,7 +115,7 @@ export default {
         transition: width 1s ease;
         width: 0;
         height: 100%;
-        background-color: rgba(#12d1e2, 0.5);
+        background: linear-gradient( rgba(#12d1e2, .5), rgba(#12d1e2, 0), rgba(#12d1e2, 0.5));
       }
     }
   }

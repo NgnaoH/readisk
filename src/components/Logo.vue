@@ -51,5 +51,8 @@ export default {};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 900;
+  &::first-letter {
+    font-size: 80px;
+  }
 }
 </style>

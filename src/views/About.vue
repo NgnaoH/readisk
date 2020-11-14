@@ -4,7 +4,7 @@
     <div class="clip-path right animate__animated animate__bounceIn"></div>
     <div class="about-content">
       <p class="animate__animated animate__flipInX">
-        A system display drive information desktop application developed using
+        Readisk: a system display drive information desktop application developed using
         <a>Vue.js</a> and <a>Electron</a>.
       </p>
       <h1 class="animate__animated animate__flipInX">© Copyright by Nguyen Thanh Hoan</h1>
@@ -43,6 +43,12 @@ export default {};
     &:hover {
       transition: 0.4s;
       color: rgba(#12d1e2, 1);
+    }
+  }
+  & > p {
+    &::first-letter {
+      font-size: 24px;
+      font-weight: bold;
     }
   }
 }

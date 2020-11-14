@@ -88,7 +88,6 @@ export default {
 .disk-parameter {
   width: 100%;
   height: 40vh;
-  // background-color: #dbdbdb;
   background-color: rgba(#12d1e2, 0.1);
   border-radius: 1rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -109,7 +108,6 @@ export default {
   border-radius: 1rem;
   text-align: center;
   padding: 2px;
-  user-select: none;
 }
 .list-item {
   width: 100%;
