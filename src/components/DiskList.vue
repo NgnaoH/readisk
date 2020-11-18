@@ -97,7 +97,7 @@ export default {
       top: 90%;
     }
     &:hover::before {
-      animation: a 1s 1;
+      animation: a 1s;
       top: -10%;
       left: 80%;
     }
