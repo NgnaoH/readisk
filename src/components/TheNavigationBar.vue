@@ -61,9 +61,15 @@ export default {
       align-items: center;
       transition: 0.4s ease;
       cursor: pointer;
+      border-radius: 1rem;
+      box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+      padding-top: 4px;
+      margin-right: 1rem;
       &:first-child {
         margin-right: auto;
         text-decoration: none;
+      box-shadow: inset 5px 5px 10px #c6c4c4, inset -5px -5px 10px #ffffff;
+
         background: -webkit-linear-gradient(
           rgba(#12d1e2, 1),
           rgba(#12d1e2, 0.5),
@@ -75,18 +81,20 @@ export default {
         text-transform: uppercase;
         letter-spacing: 0.15rem;
         font-size: 24px;
-        cursor: default;
+        margin-left: 1rem;
       }
       .icon {
-        transition: 0.4s ease;
+        // transition: 0.4s ease;
         fill: rgba(#000, 1);
       }
-      &:hover {
-        transition: 0.4s ease;
-        background-color: rgba($color: #27dfee, $alpha: 0.8);
+      &:hover:not(:first-child) {
+        // transition: 0.4s ease;
+              box-shadow: inset 5px 5px 10px #c6c4c4, inset -5px -5px 10px #ffffff;
+
+        // background-color: rgba($color: #27dfee, $alpha: 0.8);
         .icon {
-          transition: 0.4s ease;
-          fill: #fff;
+          // transition: 0.4s ease;
+          fill: #12d1e2;
         }
       }
     }

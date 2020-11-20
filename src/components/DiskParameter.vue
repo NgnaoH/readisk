@@ -88,13 +88,16 @@ export default {
 .disk-parameter {
   width: 100%;
   height: 40vh;
-  background-color: rgba(#12d1e2, 0.1);
+  // background-color: rgba(#12d1e2, 0.1);
   border-radius: 1rem;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.8s;
-  &:hover {
-    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
-  }
+  border: 2px solid #eeecec;
+  box-shadow:
+  -10px -10px 10px #ffffff, inset -10px -10px 8px #ffffff, 8px 8px 8px #c6c4c4, inset 8px 8px 8px #c6c4c4;  
+  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  // transition: box-shadow 0.8s;
+  // &:hover {
+  //   box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
+  // }
 }
 .list {
   height: 100%;

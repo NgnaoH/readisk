@@ -1,7 +1,8 @@
 <template>
   <div class="transfer-rate animate__animated animate__fadeInRight">
-    <div class="clip-path left"></div>
+    <div class="clip-path left animate__animated animate__pulse animate__infinite"></div>
     <div class="clip-path right"></div>
+    <div class="clip-path top animate__animated animate__pulse animate__fast animate__infinite"></div>
     <div class="logo animate__animated animate__bounceIn animate__delay-2s">Readisk</div>
   </div>
 </template>
@@ -12,15 +13,21 @@ export default {};
 
 <style scoped lang="scss">
 .transfer-rate {
+  overflow: hidden;
   user-select: none;
   width: 100%;
   height: 32vh;
   border-radius: 1rem;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.8s;
+  box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  // transition: box-shadow 0.8s;
+  // &:hover {
+  //   box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
+  //   height: 32vh;
+  // }
   &:hover {
-    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
-    height: 32vh;
+    // animation: aniamte__pulse infinite;
+    // animation-duration: 
   }
   display: flex;
   align-items: center;
@@ -37,6 +44,9 @@ export default {};
 }
 .right {
   clip-path: circle(38.4% at 79% 43%);
+}
+.top {
+  clip-path: circle(18% at 28% 30%);
 }
 .logo {
   font-weight: 900;

@@ -68,29 +68,37 @@ export default {
 .disk-information {
   width: 100%;
   height: 40vh;
-  background-color: rgba(#12d1e2, 0.1);
+  // background-color: rgba(#12d1e2, 0.1);
   border-radius: 1rem;
+  border: 2px solid #eeecec;
   overflow: auto;
   user-select: none;
   &::-webkit-scrollbar {
     display: none;
   }
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.8s;
-  &:hover {
-    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
-  }
+  // box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  box-shadow:
+  -10px -10px 10px #ffffff, inset -10px -10px 8px #ffffff, 8px 8px 8px #c6c4c4, inset 8px 8px 8px #c6c4c4;  
+  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  // transition: box-shadow 0.8s;
+  // &:hover {
+  //   box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
+  // }
 }
 .list {
   display: flex;
   padding: 1rem;
   flex-direction: column;
+  
 }
 .list-item {
   width: 100%;
-  height: 48px;
+  height: 60px;
   margin-bottom: 1rem;
   display: flex;
+  // box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
   .informations {
     width: 40%;
     display: flex;

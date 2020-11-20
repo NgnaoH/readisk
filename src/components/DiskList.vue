@@ -2,10 +2,15 @@
   <div class="disk-list animate__animated animate__fadeInRight">
     <div class="list">
       <div
-        class="list-item animate__animated animate__fadeInUp"
+        :class="
+          'list-item' +
+            'animate__animated' +
+            'animate__fadeInUp' +
+            { 'is-active': !buttonActive }
+        "
         v-for="(disk, index) in disks"
         :key="disk.id"
-        @click="setData(index)"
+        @click="setData(index), toggleButton"
       >
         <div>
           {{ disk.name }}
@@ -29,6 +34,11 @@ export default {
       this.disks = data;
     });
   },
+  computed: {
+    ...mapState("button", {
+      buttonActive: "buttonStatus",
+    }),
+  },
   methods: {
     ...mapActions("currentData", {
       setData: "changeCurrentData",
@@ -42,17 +52,18 @@ export default {
   user-select: none;
   width: 100%;
   height: 32vh;
-  background-color: rgba(#12d1e2, 0.1);
+  // background-color: #e6feff;
   border-radius: 1rem;
   overflow: auto;
   &::-webkit-scrollbar {
     display: none;
   }
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.8s;
-  &:hover {
-    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
-  }
+  // box-shadow: inset 5px 5px 7px #9b9999, inset -5px -5px 7px #ffffff;
+  box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  // transition: box-shadow 0.8s;
+  // &:hover {
+  //   box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
+  // }
 }
 .list {
   display: flex;
@@ -65,56 +76,27 @@ export default {
   & > div {
     border-radius: 0.5rem;
     height: 48px;
-    padding: 4px;
+    padding: 18px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
     text-align: center;
-    overflow: auto;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    // overflow: auto;
+    // &::-webkit-scrollbar {
+    //   display: none;
+    // }
     cursor: pointer;
-    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
     transition: 0.5s;
-    &:hover {
-      background-color: rgba(#12d1e2, 0.4);
-      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
-    }
     &:active {
-      transition: box-shadow 0.05s;
-      box-shadow: 0 0px 0 0 rgba(0, 0, 0, 0.5);
-    }
-    position: relative;
-    &::before {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: rgba(#eeecec, 0.4);
-      transform: rotate(45deg);
-      left: -110%;
-      top: 90%;
-    }
-    &:hover::before {
-      animation: a 1s;
-      top: -10%;
-      left: 80%;
-    }
-    @keyframes a {
-      0% {
-        top: -110%;
-        left: 90%;
-      }
-      50% {
-        top: 10%;
-        left: -200%;
-      }
-      100% {
-        top: -10%;
-        left: 90%;
+      box-shadow: inset 5px 5px 7px #9b9999, inset -5px -5px 7px #ffffff;
+      .disk-list {
+        box-shadow: 5px 5px 7px #d4d2d2, -5px -5px 7px #ffffff;
       }
     }
   }
+}
+.is-active {
+  color: #12d1e2;
 }
 </style>
