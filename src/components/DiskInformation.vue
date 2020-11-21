@@ -1,38 +1,39 @@
 <template>
   <div class="disk-information animate__animated animate__fadeInUp">
-    <div class="list" v-if="fss.length">
-      <div
-        class="list-item animate__animated animate__fadeInUp"
-        v-for="(block, index) in blocks"
-        :key="block.id"
-      >
-        <div class="informations">
-          <div class="name">
-            <div v-if="block.label">
-              {{ block.physical }} {{ block.label }} - {{ block.name }}
+    <div class="list-wrapper">
+      <div class="list">
+        <div
+          class="list-item animate__animated animate__fadeInUp"
+          v-for="(block, index) in blocks"
+          :key="block.id"
+        >
+          <div class="informations">
+            <div class="name">
+              <div v-if="block.label">
+                {{ block.physical }} {{ block.label }} - {{ block.name }}
+              </div>
+              <div v-else>{{ block.physical }} Disk - {{ block.name }}</div>
             </div>
-            <div v-else>{{ block.physical }} Disk - {{ block.name }}</div>
+            <div class="type">Type: {{ block.fstype }}</div>
           </div>
-          <div class="type">
-            Type: {{ block.fstype }}
-          </div>
-        </div>
-        <div class="opacity">
-          <div class="status">
-            <Icon icon="inbox"/> 
-            {{ Math.floor(fss[index].use) }}% Used -
-            {{
-              Math.floor(
-                (fss[index].size - fss[index].used) / 1024 / 1024 / 1024
-              )
-            }}
-            GB free of {{ Math.floor(fss[index].size / 1024 / 1024 / 1024) }} GB
-          </div>
-          <div class="size">
-            <div
-              class="used"
-              :style="{ width: `${fss[index].use}` + '%'}"
-            ></div>
+          <div class="opacity">
+            <div class="status">
+              <Icon icon="inbox" />
+              {{ Math.floor(fss[index].use) }}% Used -
+              {{
+                Math.floor(
+                  (fss[index].size - fss[index].used) / 1024 / 1024 / 1024
+                )
+              }}
+              GB free of
+              {{ Math.floor(fss[index].size / 1024 / 1024 / 1024) }} GB
+            </div>
+            <div class="size">
+              <div
+                class="used"
+                :style="{ width: fss[index] ? `${fss[index].use}` + '%' : '0%' }"
+              ></div>
+            </div>
           </div>
         </div>
       </div>
@@ -42,7 +43,7 @@
 
 <script>
 import { ipcRenderer } from "electron";
-import Icon from '@/components/Icon.vue';
+import Icon from "@/components/Icon.vue";
 export default {
   components: {
     Icon,
@@ -68,7 +69,6 @@ export default {
 .disk-information {
   width: 100%;
   height: 40vh;
-  // background-color: rgba(#12d1e2, 0.1);
   border-radius: 1rem;
   border: 2px solid #eeecec;
   overflow: auto;
@@ -76,27 +76,20 @@ export default {
   &::-webkit-scrollbar {
     display: none;
   }
-  // box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
-  box-shadow:
-  -10px -10px 10px #ffffff, inset -10px -10px 8px #ffffff, 8px 8px 8px #c6c4c4, inset 8px 8px 8px #c6c4c4;  
-  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  // transition: box-shadow 0.8s;
-  // &:hover {
-  //   box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
-  // }
+  box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  border-top: 0.75rem solid var(--background-color);
+  border-bottom: 0.75rem solid var(--background-color);
 }
 .list {
   display: flex;
-  padding: 1rem;
+  padding: 0 1rem;
   flex-direction: column;
-  
 }
 .list-item {
   width: 100%;
-  height: 60px;
-  margin-bottom: 1rem;
+  height: 64px;
+  margin-bottom: 0.25rem;
   display: flex;
-  // box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
   border-radius: 0.5rem;
   padding: 0.5rem;
   .informations {
@@ -111,19 +104,23 @@ export default {
     flex-direction: column;
     justify-content: space-around;
     margin-bottom: 2px;
+    position: relative;
+    overflow: hidden;
     .status {
       font-size: 11px;
     }
     .size {
       width: 100%;
       align-items: center;
-      border: 2px solid rgba(#12d1e2, 0.5);
       height: 50%;
+          box-shadow: inset 2px 2px 5px #c6c4c4, inset -3px -3px 5px #fff;
       .used {
         transition: width 1s ease;
         width: 0;
-        height: 100%;
-        background: linear-gradient( rgba(#12d1e2, .5), rgba(#12d1e2, 0), rgba(#12d1e2, 0.5));
+        height: 50%;
+        background: linear-gradient(rgba(18, 209, 226, 0.6), rgba(18, 209, 226, 0), rgba(18, 209, 226, 0.6));
+        position: absolute;
+        box-shadow: 3px 0px 5px #c6c4c4, inset 2px 0px 7px #fff;
       }
     }
   }

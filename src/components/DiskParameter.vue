@@ -6,17 +6,13 @@
       </div>
       <div class="list-item animate__animated animate__fadeInUp">
         <div class="sub-item bytes-sector">
-          <div class="title-para">
-            Bytes / sector
-          </div>
+          <div class="title-para">Bytes / sector</div>
           <div class="parameter">
             {{ disks[index].bytesPerSector }}
           </div>
         </div>
         <div class="sub-item sectors-track">
-          <div class="title-para">
-            Sectors / track
-          </div>
+          <div class="title-para">Sectors / track</div>
           <div class="parameter">
             {{ disks[index].sectorsPerTrack }}
           </div>
@@ -24,17 +20,13 @@
       </div>
       <div class="list-item animate__animated animate__fadeInUp">
         <div class="sub-item tracks-cylinder">
-          <div class="title-para">
-            Tracks / cylinder
-          </div>
+          <div class="title-para">Tracks / cylinder</div>
           <div class="parameter">
             {{ disks[index].tracksPerCylinder }}
           </div>
         </div>
         <div class="sub-item cylinders">
-          <div class="title-para">
-            Cylinders
-          </div>
+          <div class="title-para">Cylinders</div>
           <div class="parameter">
             {{ disks[index].totalCylinders }}
           </div>
@@ -42,18 +34,14 @@
       </div>
       <div class="list-item animate__animated animate__fadeInUp">
         <div class="sub-item capacity">
-          <div class="title-para ">
-            Capacity
-          </div>
-          <div class="parameter ">
+          <div class="title-para">Capacity</div>
+          <div class="parameter">
             {{ Math.floor(disks[index].size / 1024 / 1024 / 1024) }} GB
           </div>
         </div>
         <div class="sub-item type">
-          <div class="title-para ">
-            Type
-          </div>
-          <div class="parameter ">
+          <div class="title-para">Type</div>
+          <div class="parameter">
             {{ disks[index].type }}
           </div>
         </div>
@@ -88,16 +76,10 @@ export default {
 .disk-parameter {
   width: 100%;
   height: 40vh;
-  // background-color: rgba(#12d1e2, 0.1);
   border-radius: 1rem;
-  border: 2px solid #eeecec;
-  box-shadow:
-  -10px -10px 10px #ffffff, inset -10px -10px 8px #ffffff, 8px 8px 8px #c6c4c4, inset 8px 8px 8px #c6c4c4;  
-  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  // transition: box-shadow 0.8s;
-  // &:hover {
-  //   box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
-  // }
+  box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  overflow: hidden;
+
 }
 .list {
   height: 100%;
@@ -111,6 +93,9 @@ export default {
   border-radius: 1rem;
   text-align: center;
   padding: 2px;
+  width: 100%;
+  // box-shadow: inset 2px 2px 5px #c6c4c4, inset -4px -4px 7px #fff;
+
 }
 .list-item {
   width: 100%;

@@ -1,20 +1,20 @@
 <template>
   <div class="title-bar">
-    <ul class="windows-menu">
-      <li class="item animate__animated animate__headShake">
-        Readisk
-      </li>
-      <li @click="minimize" class="item btn">
-        <a>
-          <Icon :size="24" icon="dash"></Icon>
-        </a>
-      </li>
-      <li @click="close" class="item btn">
-        <a>
-          <Icon :size="24" icon="x"></Icon>
-        </a>
-      </li>
-    </ul>
+    <div class="windows-menu">
+      <div class="item animate__animated animate__headShake">Readisk</div>
+      <div class="btn-wrapper">
+        <div @click="minimize" class="item btn">
+          <a>
+            <Icon :size="24" icon="dash"></Icon>
+          </a>
+        </div>
+        <div @click="close" class="item btn">
+          <a>
+            <Icon :size="24" icon="x"></Icon>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,10 +23,10 @@ import Icon from "@/components/Icon.vue";
 import { ipcRenderer } from "electron";
 export default {
   methods: {
-    close: function() {
+    close: function () {
       ipcRenderer.send("close-app");
     },
-    minimize: function() {
+    minimize: function () {
       ipcRenderer.send("minimize-app");
     },
   },
@@ -50,10 +50,20 @@ export default {
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    // background-color: rgba(#ababab, 0.4);
-    // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    margin-right: 1rem;
     .btn {
       -webkit-app-region: no-drag;
+    }
+    .btn-wrapper {
+      border-radius: 1rem;
+      box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+      display: flex;
+      .item:hover {
+        .icon {
+          transition: .2s all;
+          fill: #12d1e2;
+        }
+      }
     }
     .item {
       padding: 0 0.75rem;
@@ -61,15 +71,10 @@ export default {
       align-items: center;
       transition: 0.4s ease;
       cursor: pointer;
-      border-radius: 1rem;
-      box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
       padding-top: 4px;
-      margin-right: 1rem;
       &:first-child {
         margin-right: auto;
-        text-decoration: none;
-      box-shadow: inset 5px 5px 10px #c6c4c4, inset -5px -5px 10px #ffffff;
-
+        box-shadow: none;
         background: -webkit-linear-gradient(
           rgba(#12d1e2, 1),
           rgba(#12d1e2, 0.5),
@@ -81,21 +86,10 @@ export default {
         text-transform: uppercase;
         letter-spacing: 0.15rem;
         font-size: 24px;
-        margin-left: 1rem;
+        cursor: default;
       }
       .icon {
-        // transition: 0.4s ease;
         fill: rgba(#000, 1);
-      }
-      &:hover:not(:first-child) {
-        // transition: 0.4s ease;
-              box-shadow: inset 5px 5px 10px #c6c4c4, inset -5px -5px 10px #ffffff;
-
-        // background-color: rgba($color: #27dfee, $alpha: 0.8);
-        .icon {
-          // transition: 0.4s ease;
-          fill: #12d1e2;
-        }
       }
     }
   }

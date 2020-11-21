@@ -38,12 +38,31 @@ export default new Vuex.Store({
         changeCurrentData({ commit }, payload) {
           commit("setCurrentData", payload);
         },
+        setActiveButton({ commit }, payload) {
+          commit("setActiveButton", payload);
+        },
       },
       mutations: {
         setCurrentData(state, data) {
           state.current = data;
         },
+        setActiveButton(state, data) {
+          state.current = data;
+        },
       },
     },
+    // diskSelector: {
+    //   namespaced: true,
+    //   state: () => ({
+    //     buttonStatus: false,
+    //   }),
+    //   getter: {},
+    //   actions: {
+        
+    //   },
+    //   mutations: {
+
+    //   }
+    // }
   },
 });
