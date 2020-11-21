@@ -55,13 +55,12 @@ export default {};
 .about-content {
   padding-top: 32vh;
   text-align: center;
-  color: black;
   & > p > a {
-    color: black;
+    color: var(--text-normal-color);
     transition: 0.4s;
     &:hover {
       transition: 0.4s;
-      color: rgba(#12d1e2, 1);
+      color: var(--text-active-color);
     }
   }
   & > p {

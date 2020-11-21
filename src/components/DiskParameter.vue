@@ -1,10 +1,10 @@
 <template>
-  <div class="disk-parameter animate__animated animate__fadeInUp">
+  <div class="disk-parameter animate__animated animate__fadeInLeft">
     <div class="list" v-if="disks.length">
-      <div class="list-item-name animate__animated animate__fadeInUp">
-        {{ disks[index].name }} - {{ disks[index].interfaceType }}
+      <div class="list-item-name animate__animated animate__fadeIn">
+        <span class="animate__animated animate__fadeInUp">{{ disks[index].name }} - {{ disks[index].interfaceType }}</span>
       </div>
-      <div class="list-item animate__animated animate__fadeInUp">
+      <div class="list-item animate__animated animate__fadeIn">
         <div class="sub-item bytes-sector">
           <div class="title-para">Bytes / sector</div>
           <div class="parameter">
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class="list-item animate__animated animate__fadeInUp">
+      <div class="list-item animate__animated animate__fadeIn">
         <div class="sub-item tracks-cylinder">
           <div class="title-para">Tracks / cylinder</div>
           <div class="parameter">
@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="list-item animate__animated animate__fadeInUp">
+      <div class="list-item animate__animated animate__fadeIn">
         <div class="sub-item capacity">
           <div class="title-para">Capacity</div>
           <div class="parameter">
@@ -94,8 +94,7 @@ export default {
   text-align: center;
   padding: 2px;
   width: 100%;
-  // box-shadow: inset 2px 2px 5px #c6c4c4, inset -4px -4px 7px #fff;
-
+  overflow: hidden;
 }
 .list-item {
   width: 100%;

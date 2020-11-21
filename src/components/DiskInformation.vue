@@ -1,39 +1,37 @@
 <template>
-  <div class="disk-information animate__animated animate__fadeInUp">
-    <div class="list-wrapper">
-      <div class="list">
-        <div
-          class="list-item animate__animated animate__fadeInUp"
-          v-for="(block, index) in blocks"
-          :key="block.id"
-        >
-          <div class="informations">
-            <div class="name">
-              <div v-if="block.label">
-                {{ block.physical }} {{ block.label }} - {{ block.name }}
-              </div>
-              <div v-else>{{ block.physical }} Disk - {{ block.name }}</div>
+  <div class="disk-information animate__animated animate__fadeInRight">
+    <div class="list" v-if="blocks.length">
+      <div
+        class="list-item animate__animated animate__fadeIn"
+        v-for="(block, index) in blocks"
+        :key="block.id"
+      >
+        <div class="informations">
+          <div class="name">
+            <div v-if="block.label">
+              {{ block.physical }} {{ block.label }} - {{ block.name }}
             </div>
-            <div class="type">Type: {{ block.fstype }}</div>
+            <div v-else>{{ block.physical }} Disk - {{ block.name }}</div>
           </div>
-          <div class="opacity">
-            <div class="status">
-              <Icon icon="inbox" />
-              {{ Math.floor(fss[index].use) }}% Used -
-              {{
-                Math.floor(
-                  (fss[index].size - fss[index].used) / 1024 / 1024 / 1024
-                )
-              }}
-              GB free of
-              {{ Math.floor(fss[index].size / 1024 / 1024 / 1024) }} GB
-            </div>
-            <div class="size">
-              <div
-                class="used"
-                :style="{ width: fss[index] ? `${fss[index].use}` + '%' : '0%' }"
-              ></div>
-            </div>
+          <div class="type">Type: {{ block.fstype }}</div>
+        </div>
+        <div class="opacity">
+          <div class="status">
+            <Icon icon="inbox" />
+            {{ Math.floor(fss[index].use) }}% Used -
+            {{
+              Math.floor(
+                (fss[index].size - fss[index].used) / 1024 / 1024 / 1024
+              )
+            }}
+            GB free of
+            {{ Math.floor(fss[index].size / 1024 / 1024 / 1024) }} GB
+          </div>
+          <div class="size">
+            <div
+              class="used"
+              :style="{ width: fss[index] ? `${fss[index].use}%` : '0%' }"
+            ></div>
           </div>
         </div>
       </div>
@@ -51,7 +49,7 @@ export default {
   data() {
     return {
       blocks: [],
-      fss: [],
+      fss: [{},{},{}],
     };
   },
   created() {
@@ -72,7 +70,6 @@ export default {
   border-radius: 1rem;
   border: 2px solid #eeecec;
   overflow: auto;
-  user-select: none;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -113,12 +110,16 @@ export default {
       width: 100%;
       align-items: center;
       height: 50%;
-          box-shadow: inset 2px 2px 5px #c6c4c4, inset -3px -3px 5px #fff;
+      box-shadow: inset 2px 2px 5px #c6c4c4, inset -3px -3px 5px #fff;
       .used {
-        transition: width 1s ease;
+        transition: width 2s ease;
         width: 0;
         height: 50%;
-        background: linear-gradient(rgba(18, 209, 226, 0.6), rgba(18, 209, 226, 0), rgba(18, 209, 226, 0.6));
+        background: linear-gradient(
+          rgba(18, 209, 226, 0.6),
+          rgba(18, 209, 226, 0),
+          rgba(18, 209, 226, 0.6)
+        );
         position: absolute;
         box-shadow: 3px 0px 5px #c6c4c4, inset 2px 0px 7px #fff;
       }

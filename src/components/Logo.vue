@@ -19,16 +19,6 @@ export default {};
   height: 32vh;
   border-radius: 1rem;
   box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
-  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  // transition: box-shadow 0.8s;
-  // &:hover {
-  //   box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
-  //   height: 32vh;
-  // }
-  &:hover {
-    // animation: aniamte__pulse infinite;
-    // animation-duration: 
-  }
   display: flex;
   align-items: center;
   justify-content: center;

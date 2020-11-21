@@ -40,24 +40,18 @@ body {
   height: 100vh;
 }
 .main {
-  padding-top: 32px;
+  padding: 32px 0 48px;
   margin: 0;
   height: 100vh;
 }
 .sidebar-button {
   position: fixed;
   bottom: 0;
-  left: -10px;
   z-index: 1000;
-  transition: 0.4s linear;
-  transform: translateX(-8px);
-  &:hover {
-    transition: 0.4s linear;
-    transform: translateX(-0px);
-  }
+  background: var(--background-color);
+  box-shadow: inset 5px 5px 7px #c6c4c4, inset -5px -5px 7px #fff
 }
 ::selection{
-  background: rgba($color: #27dfee, $alpha: 0.7);
-  color: #eeecec;
+  background: rgba(#27dfee, 0.3);
 }
 </style>

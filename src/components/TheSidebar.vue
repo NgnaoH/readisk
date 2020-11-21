@@ -58,20 +58,19 @@ export default {
 <style scoped lang="scss">
 .sidebar {
   position: fixed;
-  width: calc(100% + 50px);
+  width: calc(100% + 14px);
   left: -100%;
   bottom: 0;
   height: 48px;
   z-index: 900;
-  background-color: rgba($color: #27dfee, $alpha: 0.4);
+  background-color: var(--background-color);
   border-top-right-radius: 999px;
   border-bottom-right-radius: 999px;
-  opacity: 0;
   transition: left 0.4s linear, opacity 0.8s linear;
   &.is-active {
     left: 0;
-    opacity: 1;
   }
+  box-shadow: inset 0px 2px 4px #c6c4c4, inset -10px -10px 10px #fff;
 }
 .menu {
   width: 100%;
@@ -87,54 +86,49 @@ export default {
       transition: 0.4s linear;
       overflow: hidden;
       &:hover {
-        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
-        background-color: rgba($color: #27dfee, $alpha: 0.6);
+        box-shadow: inset 2px 5px 7px #c6c4c4, inset -5px -5px 7px #fff;
         transition: 0.2s linear;
       }
       .item {
         width: 100%;
         text-align: center;
         padding: 0.5em 0.75em;
-        background-color: rgba($color: #000000, $alpha: 0);
+        background-color: rgba(#000000, 0);
       }
-      &:active {
-        background-color: rgba($color: #27dfee, $alpha: 0.4);
-        box-shadow: 0 0px 10px 0 rgba(39, 223, 238, 0.5);
-      }
-      position: relative;
-      &::before {
-        content: "";
-        position: absolute;
-        width: 120%;
-        height: 120%;
-        background: rgba(#eeecec, 0.4);
-        transform: rotate(45deg);
-        left: -110%;
-        top: 90%;
-      }
-      &:hover::before {
-        animation: a 1s 1;
-        top: -10%;
-        left: 80%;
-      }
-      @keyframes a {
-        0% {
-          top: -110%;
-          left: 90%;
-        }
-        50% {
-          top: 10%;
-          left: -200%;
-        }
-        100% {
-          top: -10%;
-          left: 90%;
-        }
-      }
+      // position: relative;
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   width: 120%;
+      //   height: 120%;
+      //   background: rgba(#eeecec, 0.4);
+      //   transform: rotate(45deg);
+      //   left: -110%;
+      //   top: 90%;
+      // }
+      // &:hover::before {
+      //   animation: a 1s 1;
+      //   top: -10%;
+      //   left: 80%;
+      // }
+      // @keyframes a {
+      //   0% {
+      //     top: -110%;
+      //     left: 90%;
+      //   }
+      //   50% {
+      //     top: 10%;
+      //     left: -200%;
+      //   }
+      //   100% {
+      //     top: -10%;
+      //     left: 90%;
+      //   }
+      // }
     }
   }
 }
 .icon {
-  fill: rgba($color: #000, $alpha: 1);
+  fill: var(--text-normal-color);
 }
 </style>

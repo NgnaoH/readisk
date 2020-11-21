@@ -61,7 +61,7 @@ export default {
       .item:hover {
         .icon {
           transition: .2s all;
-          fill: #12d1e2;
+          fill: var(--text-active-color);
         }
       }
     }
@@ -89,7 +89,7 @@ export default {
         cursor: default;
       }
       .icon {
-        fill: rgba(#000, 1);
+        fill: var(--text-normal-color);
       }
     }
   }
