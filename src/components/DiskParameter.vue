@@ -77,7 +77,7 @@ export default {
   width: 100%;
   height: 40vh;
   border-radius: 1rem;
-  box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  box-shadow: 5px 5px 10px var(--boxshadow-dark), -5px -5px 10px var(--boxshadow-light);
   overflow: hidden;
 
 }
@@ -89,7 +89,7 @@ export default {
   justify-content: space-between;
 }
 .list-item-name {
-  border: 2px solid rgba(#12d1e2, 0.5);
+  border: 2px solid var(--text-active-color);
   border-radius: 1rem;
   text-align: center;
   padding: 2px;
@@ -105,7 +105,7 @@ export default {
 }
 .sub-item {
   padding-left: 0.5rem;
-  border-left: 3px dashed rgba(#12d1e2, 0.5);
+  border-left: 3px dashed var(--text-active-color);
   width: 100%;
   display: flex;
   flex-direction: column;

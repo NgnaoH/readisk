@@ -23,10 +23,10 @@ import Icon from "@/components/Icon.vue";
 import { ipcRenderer } from "electron";
 export default {
   methods: {
-    close: function () {
+    close: function() {
       ipcRenderer.send("close-app");
     },
-    minimize: function () {
+    minimize: function() {
       ipcRenderer.send("minimize-app");
     },
   },
@@ -56,11 +56,12 @@ export default {
     }
     .btn-wrapper {
       border-radius: 1rem;
-      box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+      box-shadow: 5px 5px 10px var(--boxshadow-dark),
+        -5px -5px 10px var(--boxshadow-light);
       display: flex;
       .item:hover {
         .icon {
-          transition: .2s all;
+          transition: 0.2s all;
           fill: var(--text-active-color);
         }
       }
@@ -75,11 +76,7 @@ export default {
       &:first-child {
         margin-right: auto;
         box-shadow: none;
-        background: -webkit-linear-gradient(
-          rgba(#12d1e2, 1),
-          rgba(#12d1e2, 0.5),
-          rgba(#12d1e2, 0)
-        );
+        background: var(--text-design-color);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 900;

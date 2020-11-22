@@ -1,6 +1,6 @@
 <template>
   <div class="disk-information animate__animated animate__fadeInRight">
-    <div class="list" v-if="fss.length">
+    <div class="list" v-if="blocks.length && fss.length">
       <div
         class="list-item animate__animated animate__fadeIn"
         v-for="(fs, index) in fss"
@@ -68,12 +68,12 @@ export default {
   width: 100%;
   height: 40vh;
   border-radius: 1rem;
-  border: 2px solid #eeecec;
+  border: 2px solid var(--background-color);
   overflow: auto;
   &::-webkit-scrollbar {
     display: none;
   }
-  box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  box-shadow: 5px 5px 10px var(--boxshadow-dark), -5px -5px 10px var(--boxshadow-light);
   border-top: 0.75rem solid var(--background-color);
   border-bottom: 0.75rem solid var(--background-color);
 }
@@ -110,18 +110,14 @@ export default {
       width: 100%;
       align-items: center;
       height: 50%;
-      box-shadow: inset 2px 2px 5px #c6c4c4, inset -3px -3px 5px #fff;
+      box-shadow: inset 3px 3px 5px var(--boxshadow-dark), inset -3px -3px 5px var(--boxshadow-light);
       .used {
         transition: width 1.5s;
         width: 0;
         height: 50%;
-        background: linear-gradient(
-          rgba(18, 209, 226, 0.6),
-          rgba(18, 209, 226, 0),
-          rgba(18, 209, 226, 0.6)
-        );
+        background: var(--text-design-color);
         position: absolute;
-        box-shadow: 3px 0px 5px #c6c4c4, inset 2px 0px 7px #fff;
+        box-shadow: 5px 0px 5px var(--boxshadow-dark);
       }
     }
   }

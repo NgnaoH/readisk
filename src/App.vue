@@ -44,7 +44,7 @@ body {
   bottom: 0;
   z-index: 1000;
   background: var(--background-color);
-  box-shadow: inset 5px 5px 7px #c6c4c4, inset -5px -5px 7px #fff
+  box-shadow: inset 5px 5px 7px var(--boxshadow-dark), inset -5px -5px 7px var(--boxshadow-light);
 }
 ::selection{
   background: rgba(#27dfee, 0.3);

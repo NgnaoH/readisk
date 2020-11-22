@@ -15,7 +15,7 @@ export default {};
   width: 100%;
   height: 32vh;
   border-radius: 1rem;
-  box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  box-shadow: 5px 5px 10px var(--boxshadow-dark), -5px -5px 10px var(--boxshadow-light);
   display: grid;
   place-items: center;
 }
@@ -26,6 +26,6 @@ export default {};
   text-transform: uppercase;
   color: var(--background-color);
   font-weight: 900;
-  text-shadow: 5px 5px 7px #c6c4c4, -3px -3px 6px #fff;
+  text-shadow: 5px 5px 7px var(--boxshadow-dark), -3px -3px 6px var(--boxshadow-light);
 }
 </style>

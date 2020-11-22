@@ -59,7 +59,7 @@ export default {
   &::-webkit-scrollbar {
     display: none;
   }
-  box-shadow: 5px 5px 10px #c6c4c4, -5px -5px 10px #ffffff;
+  box-shadow: 5px 5px 10px var(--boxshadow-dark), -5px -5px 10px var(--boxshadow-light);
 }
 .list {
   display: flex;
@@ -87,11 +87,11 @@ export default {
   }
 }
 .isnt-active {
-  box-shadow: 4px 4px 7px #c6c4c4, -5px -5px 8px #ffffff;
+  box-shadow: 4px 4px 7px var(--boxshadow-dark), -5px -5px 8px var(--boxshadow-light);
 }
 .is-active {
-  box-shadow: inset 2px 2px 5px #c6c4c4, inset -3px -3px 7px #ffffff,
-    0px 0px 0px #c6c4c4, 0px 0px 0px #ffffff;
+  box-shadow: inset 2px 2px 5px var(--boxshadow-dark), inset -3px -3px 7px var(--boxshadow-light),
+    0px 0px 0px var(--boxshadow-dark), 0px 0px 0px var(--boxshadow-light);
   color: var(--text-active-color);
 }
 </style>

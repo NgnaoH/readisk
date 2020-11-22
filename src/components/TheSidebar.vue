@@ -12,9 +12,9 @@
             <Icon :size="28" icon="info"></Icon>
           </router-link>
         </li>
-        <li class="menu-item">
+        <li class="menu-item" @click="toggleTheme(theme)">
           <div class="item">
-            <Icon :size="28" icon="sun"></Icon>
+            <Icon :size="28" :icon="toggleIcon ? 'sun' : 'star'"></Icon>
           </div>
         </li>
       </ul>
@@ -33,10 +33,16 @@ export default {
     ...mapState("sidebar", {
       sidebarActive: "sidebarStatus",
     }),
+    ...mapState("changeTheme", {
+      theme: "theme",
+      toggleIcon: "toggleIcon",
+    }),
   },
-  // methods: {
-  //   ...mapActions("toggleTheme", {}),
-  // },
+  methods: {
+    ...mapActions("changeTheme", {
+      toggleTheme: "toggleTheme",
+    }),
+  },
 };
 </script>
 
@@ -55,7 +61,8 @@ export default {
   &.is-active {
     left: 0;
   }
-  box-shadow: inset 0px 2px 4px #c6c4c4, inset -10px -10px 10px #fff;
+  box-shadow: inset 0px 2px 4px var(--boxshadow-dark),
+    inset -10px -10px 10px var(--boxshadow-light);
 }
 .menu {
   width: 100%;
@@ -71,7 +78,8 @@ export default {
       transition: 0.4s linear;
       overflow: hidden;
       &:hover {
-        box-shadow: inset 2px 5px 7px #c6c4c4, inset -5px -5px 7px #fff;
+        box-shadow: inset 2px 5px 7px var(--boxshadow-dark),
+          inset -5px -5px 7px var(--boxshadow-light);
         transition: 0.2s linear;
         .icon {
           transition: all 0.4s;
