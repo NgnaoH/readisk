@@ -14,7 +14,7 @@
         </li>
         <li class="menu-item" @click="toggleTheme(theme)">
           <div class="item">
-            <Icon :size="28" :icon="toggleIcon ? 'sun' : 'star'"></Icon>
+            <Icon :size="28" icon="sun"></Icon>
           </div>
         </li>
       </ul>
@@ -35,7 +35,6 @@ export default {
     }),
     ...mapState("changeTheme", {
       theme: "theme",
-      toggleIcon: "toggleIcon",
     }),
   },
   methods: {

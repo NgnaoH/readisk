@@ -95,6 +95,7 @@ export default {
   padding: 2px;
   width: 100%;
   overflow: hidden;
+  user-select: none;
 }
 .list-item {
   width: 100%;
