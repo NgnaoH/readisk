@@ -3,6 +3,21 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+
+const root = document.documentElement
+const themes = {
+  light: {
+    "--background-color": "#e4ebec",
+    "--text-normal-color": "#000000",
+    "--text-active-color": "#12d1e2",
+  },
+  dark: {
+    "--background-color": "#black",
+    "--text-normal-color": "#ffffff",
+    "--text-active-color": "#12d1e2",
+  }
+}
+
 export default new Vuex.Store({
   modules: {
     sidebar: {
@@ -14,19 +29,13 @@ export default new Vuex.Store({
       actions: {
         toggleSidebar: ({ commit }) => {
           commit("toggleSidebarStatus");
-        },
-        sidebarOff: ({ commit }) => {
-          commit("sidebarStatusOff");
-        },
+        }
       },
       mutations: {
         toggleSidebarStatus: (state) => {
           state.sidebarStatus = !state.sidebarStatus;
         },
-        sidebarStatusOff: (state) => {
-          state.sidebarStatus = false;
-        },
-      },
+      }
     },
     currentData: {
       namespaced: true,
@@ -37,32 +46,30 @@ export default new Vuex.Store({
       actions: {
         changeCurrentData({ commit }, payload) {
           commit("setCurrentData", payload);
-        },
-        setActiveButton({ commit }, payload) {
-          commit("setActiveButton", payload);
-        },
+        }
       },
       mutations: {
         setCurrentData(state, data) {
           state.current = data;
-        },
-        setActiveButton(state, data) {
-          state.current = data;
-        },
-      },
+        }
+      }
     },
-    // diskSelector: {
-    //   namespaced: true,
-    //   state: () => ({
-    //     buttonStatus: false,
-    //   }),
-    //   getter: {},
-    //   actions: {
-        
-    //   },
-    //   mutations: {
-
-    //   }
-    // }
+    toggleTheme: {
+      namespaced: true,
+      state: {
+        theme: themes.light
+      },
+      getters:{},
+      actions: {
+        toggleTheme({commit}){
+          commit("toogleTheme")
+        }
+      },
+      mutations: {
+        toggleTheme(state) {
+          state.theme = theme.dark
+        }
+      }
+    }
   },
 });

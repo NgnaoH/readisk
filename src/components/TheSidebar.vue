@@ -3,32 +3,19 @@
     <aside class="menu">
       <ul class="menu-list">
         <li class="menu-item">
-          <router-link class="item"
-            :to="{ name: 'Home' }"
-          >
+          <router-link class="item" :to="{ name: 'Home' }">
             <Icon :size="28" icon="home"></Icon>
           </router-link>
         </li>
         <li class="menu-item">
-          <router-link class="item"
-            :to="{ name: 'About' }"
-          >
+          <router-link class="item" :to="{ name: 'About' }">
             <Icon :size="28" icon="info"></Icon>
           </router-link>
         </li>
         <li class="menu-item">
-          <div class="item"
-            :to="{ name: '' }"
-          >
+          <div class="item" >
             <Icon :size="28" icon="sun"></Icon>
           </div>
-          <!-- <router-link
-            @click.native="sidebarOff"
-            :to="{ name: '' }"
-            exact-active-class="is-active"
-          >
-            <Icon :size="28" icon="sun"></Icon>
-          </router-link> -->
         </li>
       </ul>
     </aside>
@@ -47,11 +34,9 @@ export default {
       sidebarActive: "sidebarStatus",
     }),
   },
-  methods: {
-    ...mapActions("sidebar", {
-      sidebarOff: "sidebarOff",
-    }),
-  },
+  // methods: {
+  //   ...mapActions("toggleTheme", {}),
+  // },
 };
 </script>
 
