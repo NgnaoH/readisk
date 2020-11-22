@@ -13,7 +13,7 @@
           </router-link>
         </li>
         <li class="menu-item">
-          <div class="item" >
+          <div class="item">
             <Icon :size="28" icon="sun"></Icon>
           </div>
         </li>
@@ -73,6 +73,10 @@ export default {
       &:hover {
         box-shadow: inset 2px 5px 7px #c6c4c4, inset -5px -5px 7px #fff;
         transition: 0.2s linear;
+        .icon {
+          transition: all 0.4s;
+          fill: var(--text-active-color);
+        }
       }
       .item {
         width: 100%;
@@ -115,5 +119,6 @@ export default {
 }
 .icon {
   fill: var(--text-normal-color);
+  transition: all 0.4s;
 }
 </style>

@@ -21,11 +21,6 @@ export default {
     TheNavigationBar,
     TheSidebarButton,
   },
-  computed: {
-    ...mapState("sidebar", {
-      sidebarActive: "sidebarStatus",
-    }),
-  },
   methods: {
     ...mapActions("sidebar", {
       sidebarOff: "sidebarOff",

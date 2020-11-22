@@ -3,8 +3,7 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-
-const root = document.documentElement
+const root = document.documentElement;
 const themes = {
   light: {
     "--background-color": "#e4ebec",
@@ -15,8 +14,8 @@ const themes = {
     "--background-color": "#black",
     "--text-normal-color": "#ffffff",
     "--text-active-color": "#12d1e2",
-  }
-}
+  },
+};
 
 export default new Vuex.Store({
   modules: {
@@ -29,13 +28,19 @@ export default new Vuex.Store({
       actions: {
         toggleSidebar: ({ commit }) => {
           commit("toggleSidebarStatus");
-        }
+        },
+        sidebarOff: ({ commit }) => {
+          commit("sidebarOff");
+        },
       },
       mutations: {
         toggleSidebarStatus: (state) => {
           state.sidebarStatus = !state.sidebarStatus;
         },
-      }
+        sidebarOff: (state) => {
+          state.sidebarStatus = false;
+        },
+      },
     },
     currentData: {
       namespaced: true,
@@ -46,30 +51,30 @@ export default new Vuex.Store({
       actions: {
         changeCurrentData({ commit }, payload) {
           commit("setCurrentData", payload);
-        }
+        },
       },
       mutations: {
         setCurrentData(state, data) {
           state.current = data;
-        }
-      }
+        },
+      },
     },
     toggleTheme: {
       namespaced: true,
       state: {
-        theme: themes.light
+        theme: themes.light,
       },
-      getters:{},
+      getters: {},
       actions: {
-        toggleTheme({commit}){
-          commit("toogleTheme")
-        }
+        toggleTheme({ commit }) {
+          commit("toogleTheme");
+        },
       },
       mutations: {
         toggleTheme(state) {
-          state.theme = theme.dark
-        }
-      }
-    }
+          state.theme = theme.dark;
+        },
+      },
+    },
   },
 });

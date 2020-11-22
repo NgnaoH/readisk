@@ -31,20 +31,18 @@ export default {};
 .about {
   height: 100%;
   position: relative;
-  z-index: 0;
 }
 .clip-path {
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: rgba(#12d1e2, 0.1);
-  z-index: -10;
 }
 .left {
-  clip-path: circle(24% at 24% 56%);
+  clip-path: circle(16% at 24% 56%);
 }
 .right {
-  clip-path: circle(32.2% at 68% 53%);
+  clip-path: circle(26.2% at 68% 53%);
 }
 .top {
   clip-path: circle(13.3% at 37% 24%);

@@ -41,7 +41,7 @@ function createWindow() {
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
-    if (!process.env.IS_TEST) win.webContents.openDevTools();
+    // if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
     createProtocol("app");
     // Load the index.html when not in development
@@ -109,13 +109,13 @@ ipcMain.on("minimize-app", function(event) {
 });
 
 ipcMain.on("fetch-disks", (event) => {
-  si.diskLayout((data) => {
-    event.reply("disk-layout", data);
+  si.diskLayout( async (data) => {
+    await event.reply("disk-layout", data);
   });
-  si.blockDevices((data) => {
-    event.reply("block-devices", data);
+  si.blockDevices(async (data) => {
+    await event.reply("block-devices", data);
   });
-  si.fsSize((data) => {
-    event.reply("fs-size", data);
+  si.fsSize(async (data) => {
+    await event.reply("fs-size", data);
   });
 });

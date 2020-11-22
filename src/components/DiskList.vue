@@ -7,7 +7,7 @@
           animate__animated: true,
           animate__fadeIn: true,
           'isnt-active': !isActive,
-          'is-active': index == i ? !isActive : isActive,
+          'is-active': index == current ? !isActive : isActive,
         }"
         v-for="(disk, index) in disks"
         :key="disk.id"
@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     ...mapState("currentData", {
-      i: "current",
+      current: "current",
     }),
   },
   methods: {
@@ -74,10 +74,9 @@ export default {
   & > div {
     border-radius: 0.5rem;
     height: 48px;
-    padding: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0 18px;
+    display: grid;
+    place-items: center;
     text-align: center;
     overflow: auto;
     &::-webkit-scrollbar {

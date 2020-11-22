@@ -38,11 +38,12 @@ export default {
   }
   &.is-active {
     .icon {
+      fill: var(--text-normal-color);
       transform: rotateY(180deg);
     }
   }
 }
 .icon {
-  fill: var(--text-normal-color);
+  fill: var(--text-active-color);
 }
 </style>

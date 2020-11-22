@@ -1,36 +1,36 @@
 <template>
   <div class="disk-information animate__animated animate__fadeInRight">
-    <div class="list" v-if="blocks.length">
+    <div class="list" v-if="fss.length">
       <div
         class="list-item animate__animated animate__fadeIn"
-        v-for="(block, index) in blocks"
-        :key="block.id"
+        v-for="(fs, index) in fss"
+        :key="fs.id"
       >
         <div class="informations">
           <div class="name">
-            <div v-if="block.label">
-              {{ block.physical }} {{ block.label }} - {{ block.name }}
+            <div v-if="blocks[index].label">
+              {{ blocks[index].physical }} {{ blocks[index].label }} - {{ blocks[index].name }}
             </div>
-            <div v-else>{{ block.physical }} Disk - {{ block.name }}</div>
+            <div v-else>{{ blocks[index].physical }} Disk - {{ blocks[index].name }}</div>
           </div>
-          <div class="type">Type: {{ block.fstype }}</div>
+          <div class="type">Type: {{ blocks[index].fstype }}</div>
         </div>
         <div class="opacity">
           <div class="status">
             <Icon icon="inbox" />
-            {{ Math.floor(fss[index].use) }}% Used -
+            {{ Math.floor(fs.use) }}% Used -
             {{
               Math.floor(
-                (fss[index].size - fss[index].used) / 1024 / 1024 / 1024
+                (fs.size - fs.used) / 1024 / 1024 / 1024
               )
             }}
             GB free of
-            {{ Math.floor(fss[index].size / 1024 / 1024 / 1024) }} GB
+            {{ Math.floor(fs.size / 1024 / 1024 / 1024) }} GB
           </div>
           <div class="size">
             <div
               class="used"
-              :style="{ width: fss[index] ? `${fss[index].use}%` : '0%' }"
+              :style="{ width: fss ? `${fs.use}%` : '0%' }"
             ></div>
           </div>
         </div>
@@ -112,7 +112,7 @@ export default {
       height: 50%;
       box-shadow: inset 2px 2px 5px #c6c4c4, inset -3px -3px 5px #fff;
       .used {
-        transition: width 2s ease;
+        transition: width 1.5s;
         width: 0;
         height: 50%;
         background: linear-gradient(
@@ -125,5 +125,8 @@ export default {
       }
     }
   }
+}
+.icon {
+  fill: var(--text-normal-color);
 }
 </style>
