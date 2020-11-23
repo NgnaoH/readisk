@@ -34,9 +34,6 @@ body {
   background-color: var(--background-color);
   height: 100vh;
 }
-* {
-  transition: background-color all .4s ease;
-}
 .main {
   padding: 32px 0 48px;
   margin: 0;

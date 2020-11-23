@@ -8,7 +8,7 @@ const themes = {
   light: {
     "--background-color": "#e4ebec",
     "--text-normal-color": "#000000",
-    "--text-active-color": "#80ebf5",
+    "--text-active-color": "#4ee5f3",
     "--boxshadow-light": "#ffffff",
     "--boxshadow-dark": "#c6c4c4",
     "--text-design-color":

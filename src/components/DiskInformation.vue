@@ -30,7 +30,7 @@
           <div class="size">
             <div
               class="used"
-              :style="{ width: blocks ? `${fss[index].use}%` : '0%' }"
+              :style="{ width: fss ? `${fss[index].use}%` : '0%' }"
             ></div>
           </div>
         </div>
@@ -48,7 +48,7 @@ export default {
   },
   data() {
     return {
-      blocks: [],
+      blocks: [{},{},{}],
       fss: [{},{},{}],
     };
   },
