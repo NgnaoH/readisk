@@ -24,6 +24,18 @@ export default {
 
     iconElement.innerHTML = svgHTML;
   },
+  watch: {
+    icon: function(oldIcon, newIcon) {
+    const iconElement = this.$refs.root;
+
+    const svgHTML = octicons[this.icon].toSVG({
+      width: this.size,
+      class: "icon-svg",
+    });
+
+    iconElement.innerHTML = svgHTML;
+    }
+  }
 };
 </script>
 

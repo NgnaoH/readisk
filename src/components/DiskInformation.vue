@@ -1,36 +1,36 @@
 <template>
   <div class="disk-information animate__animated animate__fadeInRight">
-    <div class="list" v-if="blocks.length && fss.length">
+    <div class="list" v-if="blocks.length">
       <div
         class="list-item animate__animated animate__fadeIn"
-        v-for="(fs, index) in fss"
-        :key="fs.id"
+        v-for="(block, index) in blocks"
+        :key="block.id"
       >
         <div class="informations">
           <div class="name">
-            <div v-if="blocks[index].label">
-              {{ blocks[index].physical }} {{ blocks[index].label }} - {{ blocks[index].name }}
+            <div v-if="block.label">
+              {{ block.physical }} {{ block.label }} - {{ block.name }}
             </div>
-            <div v-else>{{ blocks[index].physical }} Disk - {{ blocks[index].name }}</div>
+            <div v-else>{{ block.physical }} Disk - {{ block.name }}</div>
           </div>
-          <div class="type">Type: {{ blocks[index].fstype }}</div>
+          <div class="type">Type: {{ block.fstype }}</div>
         </div>
         <div class="opacity">
           <div class="status">
             <Icon icon="inbox" />
-            {{ Math.floor(fs.use) }}% Used -
+            {{ Math.floor(fss[index].use) }}% Used -
             {{
               Math.floor(
-                (fs.size - fs.used) / 1024 / 1024 / 1024
+                (fss[index].size - fss[index].used) / 1024 / 1024 / 1024
               )
             }}
             GB free of
-            {{ Math.floor(fs.size / 1024 / 1024 / 1024) }} GB
+            {{ Math.floor(fss[index].size / 1024 / 1024 / 1024) }} GB
           </div>
           <div class="size">
             <div
               class="used"
-              :style="{ width: fss ? `${fs.use}%` : '0%' }"
+              :style="{ width: blocks ? `${fss[index].use}%` : '0%' }"
             ></div>
           </div>
         </div>

@@ -71,6 +71,7 @@ export default new Vuex.Store({
       namespaced: true,
       state: () => ({
         theme: "dark",
+        icon: "sun"
       }),
       getters: {},
       actions: {
@@ -85,7 +86,8 @@ export default new Vuex.Store({
       },
       mutations: {
         toggleTheme(state) {
-          state.theme == "light" ? (state.theme = "dark") : (state.theme = "light");
+          state.theme === "light" ? (state.theme = "dark") : (state.theme = "light");
+          state.icon === "sun" ? state.icon = "star" : state.icon = "sun"
         },
       },
     },

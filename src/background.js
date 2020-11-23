@@ -109,7 +109,7 @@ ipcMain.on("minimize-app", function(event) {
 });
 
 ipcMain.on("fetch-disks", (event) => {
-  si.diskLayout( async (data) => {
+  si.diskLayout(async (data) => {
     await event.reply("disk-layout", data);
   });
   si.blockDevices(async (data) => {
